@@ -1,0 +1,164 @@
+@import url("reset.css");
+
+body{
+	color: #000;
+}
+
+/* =====header================== */
+
+.header {
+	font-size: 1.5rem;
+}
+
+.title-color{
+	font-size: 3rem;
+color: rgb(0, 123, 255);
+}
+
+h1{
+	font-size: 3rem;
+	color: rgb(33, 2, 2);
+}
+
+
+.header-block p {
+	color: rgb(255, 0, 0);
+}
+.header-block p span{
+	color: rgb(137, 12, 12);
+	font-size: 2rem;
+}
+.header-block > p > a{
+	color: rgb(63, 77, 15);
+}
+
+
+.header-box p {
+	color: rgb(199, 0, 0);
+}
+.header-box a{ 
+	color: rgb(77, 22, 22);
+}
+
+
+
+.header-box.box-header p{
+	color: rgb(255, 134, 34);
+}
+.box-header > a{
+	color: rgb(91, 59, 18);
+}
+.box-header ~ p{
+	color: rgb(255, 231, 98);
+}
+.box-header + p{
+	color: rgb(150, 255, 98);
+}
+
+/* .header-navigation{
+} */
+
+
+.navigation-title{
+		font-size: 2rem;
+	color: rgb(53, 0, 0);
+}
+.header-navigation p{
+	color: rgb(53, 0, 0);
+}
+.header-navigation ol >*  { 
+	
+	color: rgb(246, 110, 212);
+}
+.header-navigation ul > *	 { 
+	color: rgb(168, 0, 126);
+}
+/* ======main======================================= */
+
+/* ======history======================================= */
+
+#history{
+		font-size: 2rem;
+	color: rgb(53, 0, 0);
+
+}
+.paragraph{
+	color: rgb(79, 164, 37);
+}
+
+.link{
+	color: rgb(22, 188, 188);
+}
+
+.paragraph ~ p {
+	color: rgb(201, 4, 4);
+
+}
+.paragraph + p a {
+	color: rgb(98, 255, 0);
+
+}
+.posessed{
+	color: rgb(8, 56, 160);
+}
+
+.posessed p ~	 p {
+	color: rgb(23, 173, 60);
+}
+
+/* ======growing+later======================================= */
+
+.groving,
+.later p{
+	color: rgb(79, 115, 148);
+}
+
+#later,
+#groving{
+	font-size: 2.25rem;
+	color: rgb(6, 191, 129);
+}
+#later{
+	color: brown;
+}
+
+
+/* =====blackened======================================= */
+
+/* #blackened{
+} */
+h5{
+	font-size: 2.25rem;
+	color: rgb(0, 0, 0);
+}
+.blackened-box p{
+	color: rgb(181, 143, 19);
+}
+.blackened-box > a{
+	color: rgb(32, 105, 222);
+}
+
+.blackened-box .blackened-item p{
+	color: chartreuse;
+}
+.blackened-box .blackened-item a{
+	color: rgb(255, 4, 0);
+}
+
+/* =====footer====================================== */
+
+footer{
+	font-size: 2rem;
+}
+.other h6 mark{	font-size: 3rem;
+color: rgb(0, 123, 255);
+
+}
+
+.other-block.block-other >*{
+color: cyan;
+}
+
+.other-block.block-other ul li>*{
+color: rgb(0, 47, 255);
+}
