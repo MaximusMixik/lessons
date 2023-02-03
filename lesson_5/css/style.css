@@ -1,0 +1,111 @@
+@import url("reset.css");
+
+/* загальні стилі */
+body {
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 1.79;
+	color: #6C757D;
+}
+
+[class*="-container"] {
+	max-width: 840px;
+	padding: 0 15px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+
+.main,
+.footer {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 40px 0;
+	overflow: hidden;
+}
+
+.title {
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 1.60;
+	color: #212529;
+	margin-bottom: 40px;
+}
+
+.content>p:not(:last-child) {
+	margin-bottom: 23px;
+}
+
+/* або, тільки закоментувати padding header,
+ main, footer які зараз діючі */
+/* .content p {
+	margin-bottom: 23px;
+}
+.header,
+.main,
+.footer {
+	padding-top: 40px;
+	padding-bottom: 17px;
+} */
+
+.footer-images,
+.main-image {
+	margin-bottom: 80px;
+
+}
+
+
+.footer-images,
+.main-image img {
+	border-radius: 5px;
+	max-width: 100%;
+	font-size: 0;
+}
+
+/*=====header==================================================  */
+/* .header-container {}
+.header-content {} */
+.header {
+	padding: 15px 0 40px;
+}
+
+.header-title {
+	max-width: 400px;
+}
+
+/*=====main==================================================  */
+/* .main-image {}
+.main-container {}
+.main-content {} */
+.main-title {
+	max-width: 600px;
+}
+
+/*=====footer==================================================  */
+/* .footer-images {}
+.footer-container {}
+.footer-content {} */
+
+.footer {
+	padding-bottom: 60px;
+}
+
+.footer-images img+img {
+	margin-left: 30px;
+}
+
+/*=====поза макетом==================================================  */
+.body__link {
+	text-align: center;
+}
+
+.body__link a {
+	display: inline-block;
+	color: #212529;
+	padding: 15px;
+	border: 1px solid #6C757D;
+	border-radius: 30px;
+
+}

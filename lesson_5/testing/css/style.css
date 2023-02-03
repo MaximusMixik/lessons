@@ -1,0 +1,116 @@
+@import url("reset.css");
+
+[class*="-container"] {
+	max-width: 1100px;
+	padding: 50px 15px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+/* ========header======= */
+.header-container {
+	font-size: 2rem;
+}
+
+.header-content p {
+	display: inline;
+}
+
+.header-content span {
+	display: block;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.header-content a {
+	color: rgba(119, 85, 73, 0.753);
+}
+
+.header-content>a {
+	display: block;
+	text-align: center;
+	margin: 20px auto 0;
+}
+
+.header-box {
+	margin: 0 auto;
+	max-width: 400px;
+
+}
+
+/* 	padding: 20px; для кликабельности */
+.header-box>a {
+	display: inline-block;
+	padding: 20px;
+}
+
+/* ========main======= */
+/* .main {}
+.main-container {} */
+.main-content {
+	margin-bottom: 50px;
+}
+
+.main-content img {
+	vertical-align: middle;
+}
+
+.main-content p {
+	display: inline;
+}
+
+/* ========main-test======= */
+/* .main-test {} */
+.test {
+	max-width: 300px;
+}
+
+.test-left {
+	margin: 0 auto 0 0;
+}
+
+.test-center {
+	margin: 0 auto;
+}
+
+.test-right {
+	margin: 0 0 0 auto;
+}
+
+/* =======footer======= */
+.footer-container {
+	max-width: 800px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 4rem;
+}
+
+.footer-images {
+	margin: 30px auto;
+}
+
+.clip {
+	overflow: clip;
+	max-width: 605px;
+	max-height: 400px;
+}
+
+.hidden {
+	overflow: hidden;
+	max-width: 605px;
+	max-height: 400px;
+}
+
+.scroll {
+	overflow: scroll;
+	/*або overflow-y: auto; */
+	min-width: 605px;
+	max-height: 400px;
+}
+
+.scroll-auto {
+	overflow: auto;
+	/*або overflow-x: auto; */
+	max-width: 100%;
+	min-height: 100%;
+}
