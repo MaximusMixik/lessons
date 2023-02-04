@@ -1,111 +1,116 @@
 @import url("reset.css");
 
-/* загальні стилі */
-body {
-	font-family: 'Poppins', sans-serif;
-	font-style: normal;
-	font-weight: 300;
-	font-size: 14px;
-	line-height: 1.79;
-	color: #6C757D;
-}
-
 [class*="-container"] {
-	max-width: 840px;
-	padding: 0 15px;
+	max-width: 1100px;
+	padding: 50px 15px;
 	margin: 0 auto;
 	overflow: hidden;
 }
 
-
-.main,
-.footer {
-	max-width: 1240px;
-	margin: 0 auto;
-	padding: 40px 0;
-	overflow: hidden;
+/* ========header======= */
+.header-container {
+	font-size: 2rem;
 }
 
-.title {
-	font-weight: 700;
-	font-size: 25px;
-	line-height: 1.60;
-	color: #212529;
-	margin-bottom: 40px;
+.header-content p {
+	display: inline;
 }
 
-.content>p:not(:last-child) {
-	margin-bottom: 23px;
-}
-
-/* або, тільки закоментувати padding header,
- main, footer які зараз діючі */
-/* .content p {
-	margin-bottom: 23px;
-}
-.header,
-.main,
-.footer {
-	padding-top: 40px;
-	padding-bottom: 17px;
-} */
-
-.footer-images,
-.main-image {
-	margin-bottom: 80px;
-
-}
-
-
-.footer-images,
-.main-image img {
-	border-radius: 5px;
-	max-width: 100%;
-	font-size: 0;
-}
-
-/*=====header==================================================  */
-/* .header-container {}
-.header-content {} */
-.header {
-	padding: 15px 0 40px;
-}
-
-.header-title {
-	max-width: 400px;
-}
-
-/*=====main==================================================  */
-/* .main-image {}
-.main-container {}
-.main-content {} */
-.main-title {
-	max-width: 600px;
-}
-
-/*=====footer==================================================  */
-/* .footer-images {}
-.footer-container {}
-.footer-content {} */
-
-.footer {
-	padding-bottom: 60px;
-}
-
-.footer-images img+img {
-	margin-left: 30px;
-}
-
-/*=====поза макетом==================================================  */
-.body__link {
+.header-content span {
+	display: block;
 	text-align: center;
+	margin: 20px 0;
 }
 
-.body__link a {
-	display: inline-block;
-	color: #212529;
-	padding: 15px;
-	border: 1px solid #6C757D;
-	border-radius: 30px;
+.header-content a {
+	color: rgba(119, 85, 73, 0.753);
+}
 
+.header-content>a {
+	display: block;
+	text-align: center;
+	margin: 20px auto 0;
+}
+
+.header-box {
+	margin: 0 auto;
+	max-width: 430px;
+
+}
+
+/* 	padding: 20px; для кликабельности */
+.header-box>a {
+	display: inline-block;
+	padding: 20px;
+}
+
+/* ========main======= */
+/* .main {}
+.main-container {} */
+.main-content {
+	margin-bottom: 50px;
+}
+
+.main-content img {
+	vertical-align: middle;
+}
+
+.main-content p {
+	display: inline;
+}
+
+/* ========main-test======= */
+/* .main-test {} */
+.test {
+	max-width: 300px;
+}
+
+.test-left {
+	margin: 0 auto 0 0;
+}
+
+.test-center {
+	margin: 0 auto;
+}
+
+.test-right {
+	margin: 0 0 0 auto;
+}
+
+/* =======footer======= */
+.footer-container {
+	max-width: 800px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 4rem;
+}
+
+.footer-images {
+	margin: 30px auto;
+}
+
+.clip {
+	overflow: clip;
+	max-width: 605px;
+	max-height: 400px;
+}
+
+.hidden {
+	overflow: hidden;
+	max-width: 605px;
+	max-height: 400px;
+}
+
+.scroll {
+	overflow: scroll;
+	/*або overflow-y: auto; */
+	min-width: 605px;
+	max-height: 400px;
+}
+
+.scroll-auto {
+	overflow: auto;
+	/*або overflow-x: auto; */
+	max-width: 100%;
+	min-height: 100%;
 }
