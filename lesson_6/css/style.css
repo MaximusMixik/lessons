@@ -105,8 +105,10 @@ body {
   width: 100%;
 }
 
-.title-m {
-  margin: 100px 0;
+.content-bm {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
 }
 
 .page__images {
