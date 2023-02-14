@@ -199,6 +199,7 @@ h2 {
 }
 
 .outro-content a {
+  display: inline-block;
   color: #FFFFFF;
   background-color: #3056D3;
   padding: 12px 30px;
