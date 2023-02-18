@@ -1,0 +1,499 @@
+@import url(reset.css);
+
+@import url(https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap);
+
+
+/* body {} */
+
+[class*="__container"] {
+  max-width: 1270px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+
+
+/* =======================intro======================*/
+
+/* .section-intro {
+  background: rgb(55, 77, 91);
+  background: url(../img/intro__bg.jpg) center / cover no-repeat;
+
+  padding: 26.6% 0 8.1%;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1.67;
+  color: #E5E5E5;
+  opacity: 0.6;
+  transition: all 1s;
+}
+
+.section-intro:hover {
+  opacity: 1;
+} */
+
+/* другий варіант */
+.section-intro {
+  background: rgb(55, 77, 91);
+  background: url(../img/intro__bg.jpg) center / cover no-repeat,
+    linear-gradient(129deg, rgba(55, 77, 91, 1) 0%, rgba(20, 20, 20, 1) 100%);
+  transition: all 1s;
+  padding: 26.6% 0 8.1%;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1.67;
+  color: #E5E5E5;
+}
+
+
+
+.section-intro:hover .intro__content {
+  visibility: visible;
+  opacity: 1;
+
+}
+
+.intro__content {
+  transition: all 1s ease;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+.intro__content>*:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+/* як доп запобіжник можна застосувати ще */
+/* .intro__content *:last-child {
+  margin-bottom: 0;
+} */
+
+
+.intro__title {
+  font-weight: 700;
+  font-size: 1.5625rem;
+  line-height: 1.60;
+  color: #F8F9FA;
+  max-width: 605px;
+}
+
+.intro__text {
+  max-width: 350px;
+}
+
+/* =================list's============================ */
+.section-list {
+  padding-top: 150px;
+  padding-bottom: 120px;
+  font-family: 'Inter', fantasy;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  color: #637381;
+}
+
+.list__container {
+  max-width: 1150px;
+}
+
+.list__title {
+  font-weight: 400;
+  font-size: 1.625rem;
+  line-height: 1.08;
+  color: #212B36;
+  margin-bottom: 45px;
+}
+
+.list__body>*:not(:last-child) {
+  margin-bottom: 60px;
+}
+
+/* як доп запобіжник можна застосувати ще  */
+/* .list__body *:last-child {
+  margin-bottom: 0;
+} */
+
+.list-column {
+  display: inline-block;
+}
+
+.list-row {
+  align-items: center;
+}
+
+.list-row:first-child .list-column:first-child {
+  margin-right: 136px;
+}
+
+.list-row>*:not(:last-child) {
+  margin-right: 91px;
+}
+
+
+.list-row:first-child .list-column:first-child>*:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+.list-column>*:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* при адаптиві коли колонки перелаштовуються */
+.list-column:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+
+/* загальні для елементів*/
+.list-column li::before {
+  content: "";
+  display: inline-block;
+  margin-right: 10px;
+  transition: all 500ms;
+  cursor: pointer;
+}
+
+.circle li,
+.star li,
+.arrow li,
+.circle-cross li,
+.circle-green li,
+.circle-blue li {
+  margin-left: 18px;
+  transition: all 500ms;
+  cursor: pointer;
+}
+
+/* ===circle=== */
+.circle {
+  line-height: 0.94;
+
+}
+
+.circle li::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3056D3;
+  margin-left: -18px;
+}
+
+.circle li:hover {
+  text-decoration: underline;
+  color: #3056D3;
+
+}
+
+.circle li:hover::before {
+  width: 10px;
+  height: 10px;
+  color: #3056D3;
+  background: #212B36;
+
+
+}
+
+/* загальні для наступних елементів */
+.star li::before,
+.arrow li::before,
+.circle-cross li::before,
+.circle-green li::before,
+.circle-blue li::before {
+  width: 18px;
+  height: 18px;
+  margin-left: -18px;
+}
+
+/* ===circle-blue=== */
+.circle-blue li::before {
+  background: url(../img/icons/circle__blue.svg)0 0 / cover no-repeat;
+}
+
+.circle-blue li:hover {
+  color: blue;
+}
+
+.circle-blue li:hover::before {
+  transform: rotate(-720deg);
+}
+
+/* ===circle-green=== */
+.circle-green li::before {
+  background: url(../img/icons/circle_green.svg)0 0 / cover no-repeat;
+}
+
+.circle-green li:hover {
+  color: green;
+}
+
+.circle-green li:hover::before {
+  transform: scale(1.3);
+}
+
+/* ===circle-cross-=== */
+.circle-cross li::before {
+  background: url(../img/icons/circle_cross.svg)0 0 / cover no-repeat;
+}
+
+.circle-cross li:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.circle-cross li:hover::before {
+  transform: scale(1.3);
+}
+
+/* ===arrow=== */
+
+.arrow li {
+  margin-left: 19px;
+}
+
+.arrow li::before {
+  width: 19px;
+  height: 8px;
+  margin-left: -19px;
+  margin-top: 5px;
+  margin-bottom: 4px;
+}
+
+.arrow li::before {
+  background: url(../img/icons/arrow.svg)0 0 / contain no-repeat;
+}
+
+.arrow li:hover {
+  color: yellowgreen;
+}
+
+.arrow li:hover::before {
+  transform: scale(1.3);
+}
+
+/* ===star=== */
+.star li::before {
+  background: url(../img/icons/star.svg)0 0 / cover no-repeat;
+}
+
+.star li:hover {
+  color: gold;
+}
+
+.star li:hover::before {
+  transform: rotate(720deg);
+}
+
+/* ==========================outro================*/
+.section-outro {
+  background: rgb(244, 247, 255);
+  /* або замість градієнта зоображення */
+  /* url(../img/outro__bg.jpg) center/ cover no-repeat, */
+  background:
+    linear-gradient(110deg, rgba(244, 247, 255, 1) 0%,
+      rgba(244, 247, 255, 1) 65%,
+      rgba(228, 234, 251, 1) 65%,
+      rgba(236, 240, 253, 1) 71%,
+      rgba(228, 234, 251, 1) 71%,
+      rgba(233, 238, 252, 1) 100%);
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.outro__container {
+  max-width: 1150px;
+  /* padding: 145px 15px; */
+  padding: 12.6% 15px;
+  background: url(../img/speaker.png) 84% center / auto no-repeat;
+  opacity: 0.3;
+  visibility: hidden;
+  transition: all 1.5s ease-in-out;
+}
+
+.outro__content {
+  max-width: 570px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.7s ease-in;
+}
+
+.section-outro:hover .outro__content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.section-outro:hover .outro__container {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* як доп запобіжник можна застосувати ще  */
+/* .outro__content *:last-child {
+  margin-bottom: 0;
+} */
+.outro__image img {
+  max-width: 100%;
+}
+
+.outro__content>*:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.outro__content>p:nth-child(1) {
+  font-size: 1.125rem;
+  line-height: 1.33;
+  color: #3056D3;
+}
+
+.outro__content>:nth-child(2) {
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  color: #212B36;
+}
+
+.outro__content :nth-child(3) {
+  font-weight: 500;
+  color: #637381;
+  margin-bottom: 35px;
+}
+
+.outro__content>a:first-of-type {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 30px;
+  color: #FFFFFF;
+  background: #3056D3;
+  border-radius: 30px;
+  transition: all 600ms;
+}
+
+.outro__content>a:first-of-type:hover {
+  color: #3056D3;
+  background: rgba(48, 86, 211, 0.2);
+  box-shadow: 0 0 30px 10px rgba(97, 48, 211, 0.7);
+
+}
+
+/* ======poligon============= */
+
+.section-poligon {
+  padding: 10% 0;
+}
+
+
+
+.poligon__container {
+  max-width: 1150px;
+}
+
+.content__box>*:not(:last-child) {
+  margin-bottom: 30px;
+
+}
+
+.content__box {
+  text-align: center;
+}
+
+.content__box>*:nth-child(odd) {
+  background-color: #3056D3;
+}
+
+.content__box>*:nth-child(even) {
+  background-color: #30d350;
+}
+
+.content__box a:visited {
+  color: greenyellow;
+}
+
+.content__box li {
+  max-width: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  transition: all 300ms;
+}
+
+.content__box .link:focus {
+  outline: 5px solid blue;
+}
+
+.link {
+  display: inline-block;
+  padding: 20px;
+
+}
+
+.content__box li:last-of-type:hover,
+.content__box li:nth-child(3):hover,
+.content__box li:first-of-type:hover {
+  background-color: #30d350;
+  color: #3056D3;
+
+}
+
+.content__box li:first-of-type:active {
+  background-color: gold;
+  box-shadow: 0 0 15px 5px gold;
+}
+
+
+.content__box li:nth-child(even):hover {
+  background-color: #30bad3;
+  color: #c0d330;
+
+}
+
+.content__box li:nth-child(2):active {
+  background-color: rgb(255, 0, 234);
+  box-shadow: 0 0 15px 5px rgb(255, 0, 234);
+}
+
+.content__box li:nth-child(2):visited {
+  color: greenyellow;
+  text-decoration: underline;
+}
+
+.test__box {
+  padding: 50px 0;
+  text-align: center;
+  color: #212B36;
+}
+
+.test__box>*:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.next,
+.hover {
+  display: inline-block;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+
+}
+
+.hover:hover+.text {
+  color: red;
+
+}
+
+.no-visible {
+  display: none;
+}
+
+.no-visible:target {
+  display: block;
+}
