@@ -476,6 +476,7 @@
   margin-bottom: 20px;
 }
 
+/* =============================== */
 .next,
 .hover {
   display: inline-block;
@@ -490,10 +491,112 @@
 
 }
 
+/* ======================== */
 .no-visible {
   display: none;
+  margin-bottom: 50px;
 }
 
 .no-visible:target {
   display: block;
+}
+
+/* ===================== */
+.ol-box li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.ol-box {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 0;
+  counter-reset: item;
+}
+
+.ol-box li {
+  font-size: 1.5rem;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #30bad3;
+  transition: all 300ms ease-in-out;
+}
+
+.ol-box li:before {
+  counter-increment: item;
+  content: "(" counter(item) ".)";
+  margin-right: 3px;
+  color: #212B36;
+}
+
+.ol-box li:nth-child(2)::before {
+  counter-increment: item;
+  content: "[" counter(item) ".]";
+  margin-right: 3px;
+  color: #212B36;
+
+
+}
+
+.ol-box li:last-of-type::before {
+  counter-increment: item;
+  content: counter(item) ".";
+  margin-right: 5px;
+  color: #ffffff;
+  background-color: #3056D3;
+  /* border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 10px; */
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.ol-box li:hover {
+  background-color: rgba(48, 186, 211, 0.3);
+  box-shadow: inset 0 0 30px 20px rgba(48, 97, 211, 0.8), 0 0 30px 10px #aa30d3b6;
+}
+
+.ol-box li:hover:before {
+  counter-increment: item;
+  content: ")" counter(item) ".(";
+}
+
+.ol-box li:nth-child(2):hover::before {
+  counter-increment: item;
+  content: "]" counter(item) ".[";
+
+}
+
+.ol-box li:last-of-type:hover::before {
+  counter-increment: item;
+  content: counter(item) ".";
+  background-color: #30d387;
+}
+
+
+/* ======================== */
+
+
+.ul-box:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+
+.ul-box :nth-child(n + 5) {
+  color: #30d350;
+}
+
+.ul-box :nth-child(3n + 1) {
+  color: red;
+}
+
+.ul-box :nth-child(3n-1) {
+  color: #d330c8;
+}
+
+
+.ul-box :nth-child(5n) {
+  color: blue
 }
