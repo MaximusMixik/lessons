@@ -71,7 +71,7 @@ header {
 
 }
 
-.portfolio__container .content img:not(n+4) {
+.portfolio__container .content img:nth-child(n+4) {
   margin-bottom: 0;
 }
 
