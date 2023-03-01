@@ -12,15 +12,20 @@ header__burger.forEach(function (item) {
 });
 
 
+const swiper = new Swiper('.swiper', {
+  speed: 3000,
 
-$(document).ready(function(){
-  $('.slider').slick({
+  direction: 'horizontal',
+  loop: true,
 
-    arrows:  false,
-    dots: true,
-    adaptiveHeight: true,  
-    infinite: true,
-    fade: true,
-     appendDots:$(".dots"),
-  });
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'fraction',
+  },
+   autoplay: {
+   delay: 5000,
+    //  reverseDirection: true,
+  disableOnInteraction: true,
+  pauseOnMouseEnter: true,
+  },
 });
