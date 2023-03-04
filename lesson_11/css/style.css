@@ -78,7 +78,7 @@ body {
 	transition: all 500ms ease-out;
 	font-weight: 400;
 	font-size: 0.6875rem;
-	line-height: 1.50;
+	line-height: 1.5;
 	color: #FFFFFF;
 }
 
@@ -91,7 +91,6 @@ body {
 .header__favorits::after,
 .header__cart::after {
 	position: absolute;
-	display: block;
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
@@ -119,6 +118,7 @@ body {
 }
 
 .menu__item {
+	line-height: 1.5;
 	display: inline-block;
 }
 
@@ -128,11 +128,13 @@ body {
 
 .menu__link_element-bg,
 .menu__link_element {
-	padding-right: 18px;
-	line-height: 1.5;
 	color: #212B36;
 	position: relative;
 	transition: all 400ms ease;
+}
+
+.menu__link_element {
+	padding-right: 18px;
 }
 
 .menu__link_element-bg {
@@ -141,13 +143,10 @@ body {
 	padding: 9px 45px 9px 21px;
 }
 
-
-
 .menu__link_element-bg::after,
 .menu__link_element::after {
 	content: '';
 	position: absolute;
-	display: block;
 	width: 11px;
 	height: 6px;
 	top: 45%;
@@ -214,6 +213,7 @@ body {
 	transition: all 500ms ease-in;
 }
 
+/* для більшої площі дії */
 .sub-menu__item {
 	line-height: 2;
 }
@@ -231,7 +231,6 @@ body {
 .sub-menu__link_element::after {
 	content: '';
 	position: absolute;
-	display: block;
 	width: 5px;
 	height: 9.3px;
 	top: 32%;
@@ -256,7 +255,6 @@ body {
 .menu__sub-menu::before {
 	content: '';
 	position: absolute;
-	display: block;
 	width: 32px;
 	height: 20px;
 	top: -11px;
@@ -267,14 +265,14 @@ body {
 
 }
 
+/* невидима підкладка для невеликого розширення області видимості блоку */
 .menu__sub-menu::after {
 	content: '';
 	position: absolute;
-	display: block;
-	width: 140%;
-	height: 140%;
+	width: 116%;
+	height: 129%;
 	top: -20%;
-	left: -20%;
+	left: -11%;
 	z-index: -1;
 	background-color: transparent;
 }
@@ -310,14 +308,15 @@ body {
 	opacity: 0;
 	visibility: hidden;
 	transition: all 600ms ease-in;
+	z-index: 1;
 }
 
+/* невидима підкладка для невеликого розширення області видимості блоку */
 .fashion-menu__body::after {
 	content: '';
 	position: absolute;
-	display: block;
-	width: 120%;
-	height: 125%;
+	width: 111%;
+	height: 121%;
 	bottom: -6%;
 	left: -6%;
 	z-index: -1;
@@ -338,9 +337,6 @@ body {
 	line-height: 1.5;
 }
 
-.fashion-menu__column>:last-child {
-	margin-right: 0;
-}
 
 .fashion-menu__column:first-child {
 	margin-right: 80px;
@@ -360,6 +356,11 @@ body {
 	margin-bottom: 12px;
 }
 
+.fashion-menu__link,
+.sub-menu__link {
+	transition: all 400ms;
+}
+
 .fashion-menu__link:hover,
 .sub-menu__link:hover {
 	color: #3056D3;
@@ -368,12 +369,16 @@ body {
 /* ======================= */
 
 
-/* .main {} */
-
 .main__container {
 	padding: 150px 15px 50px 15px;
 	max-width: 1200px;
 	margin: 0 auto;
+}
+
+.main__container p {
+	font-size: 1.5rem;
+	line-height: 1.69;
+	color: #E7E7E7;
 }
 
 .main__container>*:not(:last-child) {
@@ -381,55 +386,49 @@ body {
 }
 
 .main__block {
-	font-size: 1.5rem;
-	line-height: 1.69;
-}
 
-
-
-.main__block h1,
-h2,
-h3 {
-	background-color: #3056D3;
 	border-radius: 15px;
 	font-size: 3rem;
-	margin-bottom: 20px;
 	text-transform: uppercase;
 	letter-spacing: 3px;
-	color: gold;
 	position: sticky;
-	width: 100%;
 	top: 100px;
-	left: 0;
 	text-align: center;
-}
-
-.main__block h1 {
-	max-width: 500px;
-	/* margin: 0 auto 0 0; */
-}
-
-.main__block h2 {
-	max-width: 500px;
-	margin: 0 auto;
-}
-
-.main__block h3 {
-	max-width: 500px;
-	margin: 0 0 0 auto;
+	transition: all 400ms;
+	max-width: 380px;
 }
 
 .block-1 {
-	color: #fff;
+	margin: 0 auto 0 0;
+	background-color: #3056D3;
+	color: gold;
 }
-
-
 
 .block-2 {
-	color: #8e8e8e;
+	margin: 0 auto;
+	background-color: gray;
+	color: greenyellow
+}
+
+.block-3 {
+	margin: 0 0 0 auto;
+	background-color: black;
+	color: red;
 }
 
 
-.block-3 {
-	color: antiquewhite;
+.main__block a::after {
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 20px;
+	right: 20px;
+	bottom: 35%;
+	background: url(../img/svg/check.svg) 0 0 / 30px no-repeat;
+	transition: all 300ms;
+}
+
+
+.main__block a:hover::after {
+	transform: rotate(-180deg);
 }
