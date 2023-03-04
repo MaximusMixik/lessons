@@ -8,6 +8,7 @@
   gap: 25px;
 }
 
+.sub-menu__link,
 .menu__link,
 .social__link {
   transition: all 400ms;
@@ -22,6 +23,7 @@
   transition: all 400ms;
 }
 
+.sub-menu__link:hover,
 .menu__link:hover,
 .social__link:hover {
   color: #495057;
