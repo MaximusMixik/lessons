@@ -1,0 +1,246 @@
+@import url("reset.css");
+
+
+.wrapper {
+  min-height: 100%;
+  overflow: clip;
+
+}
+
+.main__wrapper {
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+}
+
+.main__container {
+  max-width: 1170px;
+  padding: 50px 15px;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: fantasy;
+  font-size: 4rem;
+  text-align: center;
+  color: aliceblue;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-decoration: underline;
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: gold;
+}
+
+.main__body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+
+.main__column {
+  margin-bottom: 30px;
+}
+
+.main__column:not(:last-child) {
+  margin-right: 50px;
+}
+
+.main__column p {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: azure;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+/* .box {} */
+
+.box__wrapper {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(85deg, rgba(156, 143, 119, 1) 0%, rgba(181, 96, 172, 0.7) 79%, rgba(191, 172, 137, 0.7) 99%);
+  position: relative;
+}
+
+
+[class*="box__body"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  transition: all 400ms ease;
+}
+
+[class*="box__body"] span {
+  color: aliceblue;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 90px 0;
+}
+
+
+.box__body1:hover {
+  transform: translate(30px, -10%);
+  /* transform: translateX(30px); */
+  /* transform: translateY(-10%); */
+}
+
+.box__body2:hover {
+  transform: scale(-1.2, 0.8);
+  /* transform: scale(0.5);
+  transform: scale(-1, 1); */
+}
+
+.box__body3:hover {
+  transform: rotate(-420deg);
+  /* transform: rotateX(50deg); */
+  /* transform: rotateY(300deg); */
+}
+
+.box__body4:hover {
+  transform: skew(40deg, 20deg);
+  /* transform: skewX(40deg); */
+  /* transform: skewY(20deg); */
+}
+
+.box__body5:hover {
+  transform: matrix(1.18, -0.68, -0.46, 0.78, 50, -40);
+
+}
+
+.box__body6:hover {
+  transform: translate(30px, 10px) scale(0.8, 0.7) rotate(130deg) skew(10deg, 20deg);
+}
+
+
+.box__body7 {
+  transform-origin: top right;
+  /* transform-origin: 100% 0; */
+}
+
+.box__body7:hover {
+  transform: rotate(-50deg) scale(0.8);
+}
+
+/* ===========3D================ */
+
+.box__wrapper_perspective {
+  perspective: 400px;
+}
+
+.box__body8 {
+  /* transform-origin: 0 0; */
+  transform-origin: 0 0;
+}
+
+.box__body8:hover {
+  transform: rotateY(80deg);
+}
+
+.box__body9 {
+  transform-origin: center;
+}
+
+.box__body9:hover {
+  transform: translate3d(10px, -30px, 50px);
+}
+
+.box__body10 {
+  transform-origin: top right;
+}
+
+.box__body10:hover {
+  transform: scale3d(1.2, 1.3, 2);
+}
+
+.box__body11 {
+  transform-origin: center left;
+}
+
+.box__body11:hover {
+  transform: rotate3d(-1, 2, 1, 60deg);
+}
+
+
+.box__body12 {
+  transform-origin: center left;
+}
+
+.box__body12:hover {
+  transform: scale3d(0.8, 0.6, 5) rotate3d(-1, 2, 1, 60deg);
+}
+
+.box__wrapper_t-style {
+  perspective: 400px;
+  transform-style: preserve-3d;
+}
+
+.box__body13 {
+  transform-origin: bottom center;
+
+}
+
+.box__body13:hover {
+  transform: rotateX(40deg);
+}
+
+/* ================ */
+
+.flip {
+  perspective: 250px;
+}
+
+.flip__body {
+  transition: all 700ms ease;
+  transform-style: preserve-3d;
+}
+
+
+.flip__front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.flip__back {
+  transform: rotateY(-180deg);
+
+}
+
+.flip:hover .flip__body {
+  transform: rotateY(-180deg);
+}
+
+
+.main__link {
+  display: block;
+  width: 300px;
+  background-color: red;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3px 0;
+  text-transform: uppercase;
+  color: white;
+  position: relative;
+}
+
+.main__link::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  top: -9px;
+  right: -29px;
+  border-left: 30px solid red;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
