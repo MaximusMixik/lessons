@@ -33,6 +33,15 @@
 }
 
 .main__body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+.main__car {
   width: 750px;
   height: 230px;
   position: absolute;
@@ -40,16 +49,16 @@
   left: 50%;
   transform: translate(-50%, 0);
   transition: transform 2s linear 3.1s;
-  animation: drive 60s cubic-bezier(0, -0.11, 1, 1.18) 1 normal backwards;
+  animation: drive 60s cubic-bezier(0, -0.10, 1, 1.05) 1 normal backwards;
 }
 
-.main__body:hover {
+.main__car:hover {
   transform: translate(200%, 0);
 }
 
 @keyframes drive {
   0% {
-    transform: translateX(-600%);
+    transform: translateX(-800%);
   }
 
   10% {
@@ -61,11 +70,11 @@
   }
 
   50% {
-    transform: translateX(600%);
+    transform: translateX(800%);
   }
 
   51% {
-    transform: translateX(600%) rotateY(180deg);
+    transform: translateX(800%) rotateY(180deg);
   }
 
   60% {
@@ -76,18 +85,26 @@
     transform: translateX(-30%) rotateY(180deg);
   }
 
+  80% {
+    transform: translateX(-400%) rotateY(180deg);
+  }
+
+  90% {
+    transform: translateX(-400%) rotateY(0deg);
+  }
+
   100% {
-    transform: translateX(-600%) rotateY(180deg);
+    transform: translateX(-50%) rotateY(0deg);
   }
 }
 
-.main__body:hover::after {
+.main__car:hover::after {
   width: 120%;
   left: -10%;
   background-color: rgba(0, 255, 21, 0.7);
 }
 
-.main__body::after {
+.main__car::after {
   content: '';
   position: absolute;
   width: 110%;
@@ -130,7 +147,7 @@
   z-index: 5;
   border: 1px solid #757575;
   transition: background-color 600ms ease-in-out 2.6s;
-  animation: lights 60s ease-out 1 normal backwards;
+  animation: lights 59.9s ease-out 1 normal backwards;
 }
 
 @keyframes lights {
@@ -143,7 +160,7 @@
   }
 }
 
-.main__body:hover .front__lights {
+.main__car:hover .front__lights {
   background-color: rgb(252, 255, 93);
 }
 
@@ -162,7 +179,7 @@
   visibility: hidden;
   opacity: 0;
   transition: all 700ms ease-in 2.5s;
-  animation: headlights 60s cubic-bezier(0, -0.11, 1, 1.18) 1 normal backwards;
+  animation: headlights 59.9s cubic-bezier(0, -0.11, 1, 1.18) 1 normal backwards;
 }
 
 @keyframes headlights {
@@ -193,10 +210,11 @@
 
   100% {
     opacity: 1;
+    visibility: visible;
   }
 }
 
-.main__body:hover .front__lights::after {
+.main__car:hover .front__lights::after {
   visibility: visible;
   opacity: 1;
 }
@@ -215,7 +233,7 @@
 
 }
 
-.main__body:hover .front__lights::before {
+.main__car:hover .front__lights::before {
   background-color: rgb(255, 201, 100);
 }
 
@@ -579,7 +597,7 @@
   }
 }
 
-.main__body:hover .back__lights {
+.main__car:hover .back__lights {
   background-color: rgb(255, 0, 0);
 }
 
@@ -609,12 +627,12 @@
   }
 }
 
-.main__body:hover .back__lights::after {
+.main__car:hover .back__lights::after {
   visibility: visible;
   opacity: 1;
 }
 
-.main__body .back__bumper {
+.main__car .back__bumper {
   position: absolute;
   width: 32px;
   height: 60px;
@@ -658,7 +676,7 @@
 
 /* ================= */
 /* .car__wheel{} */
-/* .whil {} */
+/* .wheel {} */
 
 .wheel__front,
 .wheel__back {
@@ -672,7 +690,7 @@
   animation: wheel 60s cubic-bezier(0, -0.11, 1, 1.18) 1 normal forwards;
 }
 
-
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 @keyframes wheel {
   0% {
     transform: rotate(0deg);
@@ -702,8 +720,16 @@
     transform: rotate(1800deg)
   }
 
+  80% {
+    transform: rotate(900deg)
+  }
+
+  90% {
+    transform: rotate(900deg)
+  }
+
   100% {
-    transform: rotate(0deg)
+    transform: rotate(1800deg)
   }
 }
 
@@ -728,17 +754,32 @@
   transition: transform 2s linear 3s;
 }
 
-/* .main__body:hover .wheel__front,
-.main__body:hover .wheel__back {
+/* .main__car:hover .wheel__front,
+.main__car:hover .wheel__back {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 } */
 
-.main__body:hover .wheel__back img,
-.main__body:hover .wheel__front img {
+.main__car:hover .wheel__back img,
+.main__car:hover .wheel__front img {
   transform: scale(1.3) rotate(3000deg);
 }
 
-.main__body:hover .main__smoke {
+/* .wheel__back img {
+  animation: rotation 2s linear 60s 3 normal backwards;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(1000deg)
+  }
+} */
+
+
+.main__car:hover .main__smoke {
   opacity: 0.8;
   visibility: visible;
 }
@@ -753,8 +794,23 @@
   opacity: 0;
   background: url(../img/smoke.png) center/ 100% no-repeat;
   z-index: 12;
-  transition: transform 2s linear 5s, visibility 100ms linear 4.9s;
-  animation: smoke 1s 20.5s linear 1 normal backwards;
+  animation: smoke 1s linear 20.5s 1 normal backwards;
+}
+
+.car__smoke {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 87px;
+  bottom: -20px;
+  left: -4%;
+  background: url(../img/smoke.png) center/ 100% no-repeat;
+  z-index: 12;
+  opacity: 0;
+  visibility: hidden;
+  transform: rotate(4deg);
+  transition: opacity 1.5s linear 2.9s, visibility 100ms linear 2.8s;
+  /* animation: smoke 2s linear 60s 2 normal backwards; */
 }
 
 @keyframes smoke {
@@ -762,7 +818,6 @@
     visibility: visible;
     opacity: 0;
   }
-
 
   25% {
     visibility: visible;
@@ -789,7 +844,10 @@
   }
 }
 
-
+.main__car:hover .car__smoke {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* .fog {} */
 .main__fog {
@@ -901,6 +959,7 @@
   height: 100%;
 }
 
+.main__text,
 .content__box {
   position: absolute;
   max-width: 250px;
@@ -930,6 +989,7 @@
   color: #00b0cfb5;
 }
 
+.main__text::after,
 .content__box::after {
   content: '';
   position: absolute;
@@ -1046,7 +1106,6 @@
 .content__box4 {
   visibility: hidden;
   opacity: 0;
-  opacity: 0;
   animation: dialog4 60s cubic-bezier(0, -0.11, 1, 1.18) 1 normal forwards;
 }
 
@@ -1109,3 +1168,44 @@
     opacity: 0;
   }
 }
+
+.main__text {
+  opacity: 0;
+  visibility: hidden;
+  /* transition: visibility 200ms ease 60s, opacity 600ms ease 61s; */
+  animation: m-text 7s ease 61s 1 normal forwards;
+}
+
+@keyframes m-text {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.3;
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+
+  }
+}
+
+/* .main__body:hover .main__text {
+  visibility: visible;
+  opacity: 1;
+} */
