@@ -1208,3 +1208,84 @@
   visibility: visible;
   opacity: 1;
 } */
+
+.main__prougress {
+  position: fixed;
+  top: 70px;
+  right: 60px;
+  min-width: 200px;
+  min-height: 70px;
+  padding: 20px;
+  z-index: 13;
+}
+
+.main__prougress::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(../img/japan.png) 0 0 / cover no-repeat;
+  opacity: 0.6;
+  z-index: -1;
+  border-radius: 15px;
+}
+
+.prougress__line {
+  width: 0%;
+  height: 10px;
+  border-radius: 20px;
+  opacity: 0;
+  background-color: #ff0000;
+  margin-bottom: 20px;
+  animation: prougress 36s linear 0ms 1 normal forwards;
+}
+
+@keyframes prougress {
+  0% {
+    opacity: 1;
+    width: 0%;
+    background-color: #ff0303;
+  }
+
+  20% {
+    background-color: #ff03ee;
+
+  }
+
+  40% {
+    background-color: #1803ff;
+
+  }
+
+  60% {
+    background-color: #03ff68;
+
+  }
+
+  80% {
+    background-color: #ddff03;
+
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+    background-color: #ff9203;
+
+  }
+}
+
+.prougress__menu {
+  display: flex;
+  justify-content: space-around;
+  color: #ffffff;
+}
+
+.prougress__menu a img {
+  object-fit: contain;
+  object-position: center;
+  width: 25px;
+  height: 25px;
+}
