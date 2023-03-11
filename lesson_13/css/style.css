@@ -360,20 +360,17 @@
 /* .central {} */
 /* .car__central {} */
 
-.car__central::after {
+/* .car__central::after {
   content: "";
   position: absolute;
   top: 0;
   left: 100px;
   width: 430px;
   height: 100px;
-  /* border-bottom: 75px solid #ffffff;
-  border-right: 135px solid transparent;
-  border-left: 113px solid transparent; */
   transform: rotate(-1deg);
   background: url(../img/removebg.png) 0 0 / 100% no-repeat;
   z-index: 3;
-}
+} */
 
 .car__central::before {
   content: '';
@@ -570,7 +567,7 @@
   left: 78px;
   border-radius: 50% 50% 47% 53% / 100% 98% 2% 0%;
   background-color: #000000;
-  z-index: 5;
+  z-index: 11;
 }
 
 .back__lights {
@@ -686,7 +683,7 @@
   border: 15px solid rgb(47, 47, 47);
   position: absolute;
   bottom: 0;
-  z-index: 10;
+  z-index: 12;
   animation: wheel 35s cubic-bezier(0, -0.11, 1, 1.18) 1 normal forwards;
 }
 
@@ -735,14 +732,10 @@
 
 .wheel__front {
   right: 12%;
-  /* box-shadow: 5px 21px 29px 0 #000000; */
-  /* transition: box-shadow 1s ease 6.8s; */
 }
 
 .wheel__back {
   left: 12%;
-  /* box-shadow: -5px 21px 29px#000000; */
-  /* transition: box-shadow 1s ease 6.8s; */
 }
 
 .wheel__front img,
@@ -753,29 +746,10 @@
   transition: transform 2s linear 3s;
 }
 
-/* .main__car:hover .wheel__front,
-.main__car:hover .wheel__back {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-} */
-
 .main__car:hover .wheel__back img,
 .main__car:hover .wheel__front img {
   transform: scale(1.3) rotate(3000deg);
 }
-
-/* .wheel__back img {
-  animation: rotation 2s linear 60s 3 normal backwards;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(1000deg)
-  }
-} */
 
 
 .main__car:hover .main__smoke {
@@ -1288,4 +1262,186 @@
   object-position: center;
   width: 25px;
   height: 25px;
+}
+
+
+/* ============================ */
+.car__roof {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 121px;
+  width: 408px;
+  height: 78px;
+  background-color: rgb(255, 255, 255);
+  clip-path: polygon(43% 0%, 73% 6%, 97% 89%, 90% 100%, 7% 89%, 0 85%, 25% 6%);
+}
+
+.car__roof::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 241px;
+  height: 42px;
+  background-color: rgba(224, 224, 224, 0.7);
+  top: 7px;
+  right: 70px;
+  z-index: 3;
+  filter: blur(5px);
+  clip-path: polygon(19% 0, 71% 0, 100% 100%, 75% 100%, 25% 100%, 0 100%);
+}
+
+/* .glass {} */
+.glass__rear {
+  position: absolute;
+  width: 106px;
+  height: 78px;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  clip-path: polygon(100% 0, 99% 12%, 23% 96%, 0 85%, 78% 6%);
+
+}
+
+.glass__rear::after {
+  content: "";
+  position: absolute;
+  width: 104px;
+  height: 70px;
+  top: -1px;
+  left: -1px;
+  background-color: rgb(180, 180, 180);
+  clip-path: polygon(100% 0, 99% 12%, 23% 93%, 0 93%, 75% 9%);
+  z-index: 2;
+}
+
+.glass__insert {
+  position: absolute;
+  display: block;
+  width: 113px;
+  height: 59px;
+  top: 8px;
+  left: 80px;
+  background-color: rgba(0, 0, 0, 1);
+  clip-path: polygon(53% 2%, 100% 0, 75% 100%, 0% 100%);
+
+
+}
+
+.glass__insert::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 103px;
+  height: 54px;
+  top: 2px;
+  left: 7px;
+  background-color: #4c4c4c;
+  clip-path: polygon(53% 2%, 100% 0, 75% 100%, 0% 100%);
+  z-index: 2;
+}
+
+.glass__insert::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 55px;
+  height: 43px;
+  top: 9px;
+  left: 35px;
+  transform: skew(-12deg);
+  background-color: #b2b2b2;
+  clip-path: polygon(53% 2%, 100% 0, 75% 100%, 0% 100%);
+  z-index: 3;
+}
+
+
+.glass__door {
+  position: absolute;
+  width: 177px;
+  height: 59px;
+  right: 67px;
+  top: 8px;
+  clip-path: polygon(58% 8%, 76% 28%, 99% 74%, 99% 100%, 0 100%, 16% 0);
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 1;
+}
+
+
+.glass__door::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 161px;
+  height: 54px;
+  top: 4px;
+  right: 9px;
+  background-color: #4c4c4c;
+  clip-path: polygon(58% 8%, 78% 30%, 100% 76%, 100% 100%, 0 100%, 15% 0);
+  z-index: 2;
+}
+
+
+.glass__door::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 144px;
+  height: 43px;
+  top: 11px;
+  right: 14px;
+  background-color: #b2b2b2;
+  clip-path: polygon(58% 8%, 78% 30%, 100% 76%, 100% 100%, 0 100%, 15% 0);
+  z-index: 3;
+}
+
+
+.glass__windshield {
+  position: absolute;
+  width: 107px;
+  height: 68px;
+  top: 3px;
+  right: 10px;
+  clip-path: polygon(34% 4%, 100% 0, 100% 100%, 84% 100%, 0 9%);
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 18px 0px 23px 0px;
+}
+
+.glass__windshield::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 107px;
+  height: 68px;
+  top: 3px;
+  right: -9px;
+  clip-path: polygon(34% 4%, 100% 0, 100% 100%, 84% 100%, 0 9%);
+  background-color: #b2b2b2;
+  border-radius: 18px 0px 23px 0px;
+}
+
+.glass__rearview {
+  position: absolute;
+  width: 25px;
+  height: 21px;
+  bottom: 11px;
+  right: 63px;
+  z-index: 4;
+  border: 1px solid #2b2b2b;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px 23px 10px 11px;
+  transform: rotate(6deg);
+}
+
+
+.car__aerography {
+  position: absolute;
+  width: 257px;
+  height: 110px;
+  top: 74px;
+  left: 129px;
+  opacity: 0.6;
+  background: url(../img/japan.png) center/ 100% no-repeat;
+  border-radius: 7px 36px 32px 50px;
+  z-index: 10;
 }
