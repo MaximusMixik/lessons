@@ -362,6 +362,11 @@ body {
 	border-radius: 3px;
 	text-transform: uppercase;
 	z-index: 5;
+	transition: transform 400ms linear;
+}
+
+.articles__column:hover .articles-column__link {
+	transform: scale(1.2);
 }
 
 .articles-column__content {
