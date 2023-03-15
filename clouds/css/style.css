@@ -1,0 +1,154 @@
+@import url("reset.css");
+
+body {
+	background-color: rgb(10, 2, 57);
+}
+
+.wrapper {
+	overflow: clip;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper>main {
+	flex-grow: 1;
+}
+
+.page {
+	position: relative;
+}
+
+
+
+.page__container {
+	max-width: 1270px;
+	margin: 0 auto;
+	padding: 0 15px;
+
+}
+
+.page__clouds {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	height: 100%;
+	position: relative;
+	opacity: 0.9;
+}
+
+/* .clouds {} */
+.clouds__right,
+.clouds__left {
+	width: 200px;
+	position: relative;
+	z-index: 5;
+}
+
+.clouds__left {
+	height: 300px;
+}
+
+.clouds__right {
+	height: 350px;
+}
+
+.clouds__left {
+	transform-origin: 50% 0;
+	animation: clouds 2s ease-in-out infinite alternate forwards;
+}
+
+.clouds__right {
+	transform-origin: 50% 0;
+	animation: clouds 3s ease-out infinite alternate forwards;
+}
+
+@keyframes clouds {
+	0% {
+		transform: rotate(-5deg);
+	}
+
+	100% {
+		transform: rotate(5deg);
+	}
+}
+
+.clouds__left img,
+.clouds__right img {
+	max-width: 100%;
+}
+
+.page__moon {
+	animation: rotate 5s ease infinite alternate forwards;
+
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+
+	}
+
+	100% {
+		transform: rotate(20deg);
+	}
+}
+
+.moon__body {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #c3ad04c7;
+	border-radius: 50%;
+
+}
+
+.moon__body::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(10, 2, 57);
+	border-radius: 50%;
+	animation: moon 3s ease 1 normal forwards;
+}
+
+@keyframes moon {
+	0% {
+		transform: translate(-100%, -50%) rotate(0);
+	}
+
+	100% {
+		transform: translate(-66%, -50%) rotate(15deg);
+	}
+}
+
+.page__wrapper {
+	position: relative;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transform: rotate(90deg);
+	object-fit: cover;
+	object-position: center;
+}
+
+.page__wrapper img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transform: rotate(90deg);
+	z-index: 20;
+	opacity: 0.4;
+}
