@@ -364,7 +364,7 @@ body {
 	transition: transform 400ms linear;
 }
 
-.articles__column:hover .articles-column__link {
+.articles-column__img:hover .articles-column__link {
 	transform: scale(1.2);
 }
 
