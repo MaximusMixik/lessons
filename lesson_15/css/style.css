@@ -1,0 +1,219 @@
+@import url("reset.css");
+/* @import url("common.css"); */
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:regular,500,600,700&display=swap");
+
+body {
+	font-family: "Poppins", sans-serif;
+	font-size: 1.125rem;
+	line-height: 1.6;
+	color: #9C9C9C;
+}
+
+.wrapper {
+	overflow: clip;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper>main {
+	flex-grow: 1;
+}
+
+[class*="__container"] {
+	max-width: 1230px;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.title-in {
+	font-weight: 600;
+	font-size: 1.5rem;
+	line-height: 1.40;
+	color: #333333;
+}
+
+/* -----achievement------------ */
+
+.page__achievement {
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+
+/* .achievement {} */
+
+/* .achievement__container {} */
+
+.achievement__title {
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #000000;
+	position: relative;
+	/* padding-right: 490px; */
+	padding-right: 41%;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+/* адаптивна полоска */
+.achievement__title::after {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	/* width: 464px; */
+	width: 77%;
+	height: 2px;
+	left: 136px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #000000;
+
+}
+
+/* .achievement__body {} */
+
+.achievement-body {
+	display: flex;
+	flex-direction: column;
+	row-gap: 40px;
+}
+
+.achievement-body__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+}
+
+.achievement-body__image {
+	overflow: hidden;
+}
+
+.achievement-body__row:hover .achievement-body__image img {
+	transform: scale(1.02);
+}
+
+.achievement-body__image img {
+	max-width: 100%;
+	transition: transform 800ms ease-out;
+}
+
+.achievement-body__content {
+	flex: 0 1 335px;
+}
+
+.achievement-body__content>:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+/* .achievement-body__title {} */
+
+/* -----achievement------------ */
+
+.page__minimalist {
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
+/* .minimalist {} */
+/* .minimalist__container {} */
+/* .minimalist-head {} */
+.minimalist__head {
+	margin-bottom: 100px;
+}
+
+.minimalist-head__content {
+	color: #000000;
+	text-align: center;
+	max-width: 522px;
+	margin: 0 auto;
+	margin-bottom: 53px;
+}
+
+.minimalist-head__title {
+	font-weight: 700;
+	font-size: 3.5rem;
+	line-height: 1.4;
+	margin-bottom: 40px;
+}
+
+
+
+/* .minimalist-head__sub-title {} */
+
+.minimalist-head__image img {
+	max-width: 100%;
+}
+
+/* ================== */
+/* .minimalist-content {} */
+.minimalist__content {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -16px 80px -16px;
+}
+
+.minimalist-content__column {
+	flex: 0 1 50%;
+	padding: 0 16px;
+}
+
+/* як варіант */
+/* .minimalist-content__column_left {
+	padding-right: 32px;
+} */
+
+
+.minimalist-content__title {
+	margin-bottom: 24px;
+}
+
+.minimalist-content__column_left p {
+	margin-bottom: 60px;
+}
+
+.minimalist-content__column_right p:not(:last-child) {
+	margin-bottom: 30px;
+}
+
+.minimalist-content__option {
+	display: flex;
+	column-gap: 80px;
+	row-gap: 10px;
+}
+
+/* .minimalist-content__date {} */
+
+/* .minimalist-content__type {} */
+/* =======gallery======== */
+
+/* .minimalist-gallery {} */
+.minimalist__gallery {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 32px;
+	margin: 0 -16px;
+}
+
+.minimalist-gallery__image {
+	flex: 1 1 50%;
+	padding: 0 16px;
+	overflow: hidden;
+}
+
+.minimalist-gallery__image_big {
+	flex: 1 1 100%;
+}
+
+.minimalist-gallery__image img {
+	max-width: 100%;
+	transition: transform 800ms ease-out;
+}
+
+.minimalist-gallery__image:hover img {
+	transform: scale(1.02);
+}
