@@ -64,21 +64,41 @@ body {
 	position: absolute;
 	display: inline-block;
 	/* width: 464px; */
-	width: 77%;
+	/* width: 77%; */
+	width: 10%;
 	height: 2px;
 	left: 136px;
 	top: 50%;
 	transform: translateY(-50%);
-	background-color: #000000;
 
+	background-color: #9C9C9C;
+	transition: width 700ms ease-in, background-color 1s ease 700ms;
+}
+
+.page__achievement:hover .achievement__title::after {
+	width: 77%;
+	background-color: #000000;
 }
 
 /* .achievement__body {} */
 
-.achievement-body {
+/* .achievement-body {
 	display: flex;
 	flex-direction: column;
 	row-gap: 40px;
+} */
+.achievement-body__row:hover .achievement-body__image {
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+.achievement-body__row:hover .achievement-body__content {
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+.achievement-body__row:not(:last-child) {
+	margin-bottom: 40px;
 }
 
 .achievement-body__row {
@@ -86,31 +106,66 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 15px;
+	/* gap: 15px; */
 }
 
 .achievement-body__image {
+	flex: 0 1 62.166667%;
+	text-align: center;
 	overflow: hidden;
+	opacity: 0.3;
+	transform: translateX(-10%);
+	transition: transform 1s ease, opacity 500ms ease;
+}
+
+.achievement-body__image img {
+	max-width: 100%;
+	transition: transform 800ms ease-out 1s;
 }
 
 .achievement-body__row:hover .achievement-body__image img {
 	transform: scale(1.02);
 }
 
-.achievement-body__image img {
-	max-width: 100%;
-	transition: transform 800ms ease-out;
-}
-
 .achievement-body__content {
-	flex: 0 1 335px;
+	flex: 0 1 37.8333333%;
+	padding-left: 120px;
+	/* чи не краще було б надати батьківському 
+	gap: 15px; і прибрати паддінг? при зменшенні
+	вьюпорта зменшується макетна відстань зоображення 
+	до тексту за рахунок justify-content: space-between;*/
+	/* flex: 0 1 28.632479%; */
+	transform: translateX(10%);
+	opacity: 0.3;
+	transition: transform 1s ease, opacity 500ms ease;
+
 }
 
 .achievement-body__content>:not(:last-child) {
 	margin-bottom: 20px;
 }
 
-/* .achievement-body__title {} */
+.achievement-body__title {
+	position: relative;
+	display: inline-block;
+}
+
+.achievement-body__title::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #000000;
+	transition: width 500ms ease;
+}
+
+.achievement-body__row:hover .achievement-body__title::after {
+	width: 100%;
+
+}
 
 /* -----achievement------------ */
 
@@ -124,6 +179,12 @@ body {
 /* .minimalist-head {} */
 .minimalist__head {
 	margin-bottom: 100px;
+	opacity: 0.5;
+	transition: opacity 700ms ease;
+}
+
+.minimalist__head:hover {
+	opacity: 1;
 }
 
 .minimalist-head__content {
@@ -160,16 +221,46 @@ body {
 .minimalist-content__column {
 	flex: 0 1 50%;
 	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+	opacity: 0.3;
+	transition: transform 300ms ease-in, opacity 500ms ease-out 200ms;
 }
 
-/* як варіант */
-/* .minimalist-content__column_left {
-	padding-right: 32px;
-} */
+.minimalist-content__column_left {
+	transform: translate(-20%);
+}
 
+.minimalist-content__column_right {
+	transform: translate(20%);
+}
+
+.minimalist__content:hover .minimalist-content__column {
+	transform: translateX(0);
+	opacity: 1;
+}
 
 .minimalist-content__title {
 	margin-bottom: 24px;
+	display: block;
+	position: relative;
+}
+
+.minimalist-content__title::after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0%;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #000000;
+	transition: width 500ms ease;
+}
+
+.minimalist-content__column:hover .minimalist-content__title::after {
+	width: 100%;
+
 }
 
 .minimalist-content__column_left p {
@@ -180,8 +271,13 @@ body {
 	margin-bottom: 30px;
 }
 
+.minimalist-content__text {
+	flex: 1 1 auto;
+}
+
 .minimalist-content__option {
 	display: flex;
+	flex-wrap: wrap;
 	column-gap: 80px;
 	row-gap: 10px;
 }
@@ -199,6 +295,29 @@ body {
 	margin: 0 -16px;
 }
 
+.minimalist__gallery>* {
+	opacity: 0.3;
+	transition: transform 500ms ease-in,
+		opacity 800ms ease-out;
+}
+
+.minimalist__gallery>:nth-child(3n+1) {
+	transform: translateX(-30%);
+}
+
+.minimalist__gallery>:nth-child(3n-1) {
+	transform: translateX(30%);
+}
+
+.minimalist__gallery>:nth-child(3) {
+	transform: translateY(50%);
+}
+
+.minimalist__gallery:hover>* {
+	transform: translate(0, 0);
+	opacity: 1;
+}
+
 .minimalist-gallery__image {
 	flex: 1 1 50%;
 	padding: 0 16px;
@@ -211,9 +330,9 @@ body {
 
 .minimalist-gallery__image img {
 	max-width: 100%;
-	transition: transform 800ms ease-out;
+	/* transition: transform 800ms ease-out; */
 }
 
-.minimalist-gallery__image:hover img {
+/* .minimalist-gallery__image:hover img {
 	transform: scale(1.02);
-}
+} */
