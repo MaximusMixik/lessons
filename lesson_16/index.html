@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Lesson 16</title>
+</head>
+
+<body>
+	<!-- FLEX-container -->
+	<div class="wrapper">
+		<!-- <header></header> -->
+		<main class="page">
+			<section class=" page__tail tail">
+				<div class="tail__container">
+					<form action="#" class="tail__form tail-form" method="post" enctype="multipart/form-data">
+						<h2 class="tail-form__title">Billing Details</h2>
+						<div class="tail-form__inputs">
+							<input required class="tail-form__input" type="text" name="name" autocomplete="off"
+								placeholder="First name*">
+							<input required class="tail-form__input" type="text" name="last-name" autocomplete="off"
+								placeholder="Last name*">
+							<input required class="tail-form__input" type="text" name="address" autocomplete="off"
+								placeholder="Address*">
+							<input class="tail-form__input" type="text" name="address2" autocomplete="off"
+								placeholder="Address line 2">
+							<select class="tail-form__input tail-form__input_select" name="country" required>
+								<option>Country*</option>
+								<option value="USA">USA</option>
+								<option value="UK">UK</option>
+								<option value="Ireland">Ireland</option>
+								<option value="France">France</option>
+								<option value="Spain">Spain</option>
+							</select>
+							<input required class="tail-form__input" type="text" name="city/town" autocomplete="off"
+								placeholder="City/Town*">
+							<input required class="tail-form__input" type="number" name="postcode/zip" autocomplete="off"
+								placeholder="Postcode / ZIP*">
+							<input required class="tail-form__input" minlength="10" maxlength="13" type="tel" name="phone1"
+								autocomplete="off" placeholder="Phone*">
+							<input required class="tail-form__input" type="number" name="postcode2/zip2" autocomplete="off"
+								placeholder="Postcode / ZIP*">
+							<input required class="tail-form__input" minlength="10" maxlength="13" type="tel" name="phone2"
+								autocomplete="off" placeholder="Phone*">
+							<textarea class="tail-form__textarea" name="message" placeholder="Additional information"></textarea>
+						</div>
+
+
+						<div class="tail-form__checkbox checkbox">
+							<div class="checkbox__body">
+								<input class="checkbox__input" checked value="yes" id="create-01" type="checkbox" name="create"
+									autocomplete="off">
+								<label class="checkbox__label" for="create-01">Create Account</label>
+							</div>
+							<div class="checkbox__body">
+								<input class="checkbox__input" value="yes" id="ship-01" type="checkbox" name="ship-to"
+									autocomplete="off">
+								<label class="checkbox__label" for="ship-01">Ship to a different address?</label>
+							</div>
+						</div>
+
+
+						<div class="tail-form__coupon coupon">
+							<h3 class="coupon__title">Apply Coupon to get discount!</h3>
+							<div class="coupon__row">
+								<input class="coupon__input " type="text" name="coupon" autocomplete="off" placeholder="Coupon code">
+								<button class="coupon__button" type="submit">Apply Code </button>
+							</div>
+						</div>
+
+					</form>
+
+					<div class="tail__details tail-details">
+						<div class="tail-details__wrapper"></div>
+					</div>
+				</div>
+			</section>
+			<section class=" page__crisp crisp">
+				<div class="crisp__container">
+					<div class="crisp__form crisp-form">
+						<h2 class="crisp-form__title">Shipping Address</h2>
+						<form action="#" class="crisp-form__authorization authorization">
+							<div class="authorization__mail">
+								<label class="authorization__label" for="email">Email Address <span>*</span></label>
+								<input class="authorization__input" id="email" type="email" required name="email" autocomplete="off"
+									placeholder="roni_cost@example.com">
+							</div>
+							<div class="authorization__password">
+								<label class="authorization__label" for="password">Password</label>
+								<input class="authorization__input" id="password" type="password" required name="password"
+									autocomplete="off" placeholder="**************************">
+							</div>
+							<div class="authorization__mail">
+								<label class="authorization__label" for="p-code">Zip/Postal Code</label>
+								<input class="authorization__input" id="p-code" type="number" required name="p-code" autocomplete="off">
+							</div>
+						</form>
+						<form action="#" class="crisp-form__registration registration"></form>
+					</div>
+
+					<div class="crisp__details"></div>
+				</div>
+			</section>
+			<!-- <section class="page__practice practice">
+				disabled, value 
+type=hidden
+			</section> -->
+		</main>
+		<!-- <footer></footer> -->
+	</div>
+</body>
+
+</html>
