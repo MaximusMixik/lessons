@@ -562,7 +562,7 @@ body {
 	text-align: right;
 	color: #828282;
 	position: relative;
-	transition: color 400ms ease,
+	transition: color 400ms ease;
 }
 
 .registration__reset:hover {

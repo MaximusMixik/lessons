@@ -28,7 +28,7 @@
 									autocomplete="off" placeholder="Address line 2"></div>
 							<div class="tail-form__body-input tail-form__body-input_select">
 								<select class="tail-form__input tail-form__input_select " name="country" required>
-									<option type="hidden">Country*</option>
+									<option>Country*</option>
 									<option value="USA">USA</option>
 									<option value="UK">UK</option>
 									<option value="Ireland">Ireland</option>
@@ -52,13 +52,11 @@
 
 						<div class="tail-form__checkbox checkbox">
 							<div class="checkbox__body">
-								<input class="checkbox__input" checked value="yes" id="create-01" type="checkbox" name="create"
-									autocomplete="off">
+								<input class="checkbox__input" checked value="yes" id="create-01" type="checkbox" name="create">
 								<label class="checkbox__label" for="create-01">Create Account</label>
 							</div>
 							<div class="checkbox__body">
-								<input class="checkbox__input" value="yes" id="ship-01" type="checkbox" name="ship-to"
-									autocomplete="off">
+								<input class="checkbox__input" value="yes" id="ship-01" type="checkbox" name="ship-to">
 								<label class="checkbox__label" for="ship-01">Ship to a different address?</label>
 							</div>
 						</div>
@@ -100,8 +98,7 @@
 								</div>
 								<div class="authorization__item ">
 									<label class="authorization__label" for="p-code">Zip/Postal Code</label>
-									<input class="authorization__input" minlength="8" id="p-code" type="number" name="p-code"
-										autocomplete="off">
+									<input class="authorization__input" minlength="8" id="p-code" type="number" name="p-code">
 								</div>
 							</div>
 							<div class=" authorization__text">You already have an account with us. Sign in or
@@ -130,8 +127,8 @@
 									<label class="registration__label" for="address">Street Address <span>*</span></label>
 									<input class="registration__input" id="address" type="text" required name="address"
 										autocomplete="off">
-									<input class="registration__input" id="address" type="text" name="address" autocomplete="off">
-									<input class="registration__input" id="address" type="text" name="address" autocomplete="off">
+									<input class="registration__input" type="text" name="address" autocomplete="off">
+									<input class="registration__input" type="text" name="address" autocomplete="off">
 								</div>
 								<div class="registration__item ">
 									<label class="registration__label" for="country">Country <span>*</span></label>
@@ -142,13 +139,12 @@
 									<label class="registration__label" for="location">State/Province <span>*</span></label>
 									<select class="registration__input registration__input_select " name="location" required
 										id="location">
-										<option type="hidden">Please select a region, state or province</option>
+										<option>Please select a region, state or province</option>
 										<option value="Kyiv">Kyiv</option>
 										<option value="Kharkiv">Kharkiv</option>
 										<option value="Odessa">Odessa</option>
 										<option value="Donetsk">Donetsk</option>
 										<option value="Ternopil">Ternopil</option>
-										<option type="hidden">...</option>
 									</select>
 								</div>
 							</div>
@@ -192,17 +188,17 @@
 						<div class="practice-form__item">
 							<label for="name">Enter your name ---></label>
 							<input tabindex="2" type="text" name="username" placeholder="Enter your name" autocomplete="off" required
-								id="name">
+								id="username">
 						</div>
 						<div class="practice-form__item">
-							<label for="email">Enter your email ---></label>
+							<label for="email-01">Enter your email ---></label>
 							<input tabindex="3" type="email" name="email" placeholder="Enter your email" autocomplete="off" required
-								id="email">
+								id="email-01">
 						</div>
 						<div class="practice-form__item">
 							<label for="pass">Enter your password ---></label>
-							<input tabindex="4" type="password" name="pass" placeholder="Enter your password" autocomplete="off"
-								required id="pass">
+							<input tabindex="4" type="password" minlength="8" maxlength="12" name="pass"
+								placeholder="Enter your password" autocomplete="off" required id="pass">
 						</div>
 						<div class="practice-form__item">
 							<label for="phone">Enter your phone ---></label>
@@ -211,12 +207,12 @@
 						</div>
 						<div class="practice-form__item">
 							<label for="age">Enter your age ---></label>
-							<input tabindex="6" type="number" name="age" minlength="1" maxlength="2" placeholder="Enter your age"
-								autocomplete="off" required id="age">
+							<input tabindex="6" type="number" name="age" placeholder="Enter your age" autocomplete="off" required
+								id="age">
 						</div>
 						<div class="practice-form__item">
 							<label for="hd">Disabled ---></label>
-							<input tabindex="7" type="hidden" disabled name="hd" placeholder="disabled =(" autocomplete="off" id="hd">
+							<input tabindex="7" type="hidden" disabled name="hd">
 						</div>
 						<div class="practice-form__item">
 							<label for="color">Choose your favorite color---></label>
