@@ -125,7 +125,6 @@ body {
 	transform: translate(0, -50%) rotate(-45deg);
 }
 
-
 .tail-form__input_select>:first-child {
 	display: none;
 }
@@ -525,7 +524,7 @@ body {
 	border: 4px solid #000;
 }
 
-.radio__input:focus~.radio__label {
+.radio__input:focus-visible~.radio__label {
 	outline: 1px solid #000;
 }
 
@@ -589,7 +588,7 @@ body {
 	background-color: #000;
 }
 
-.authorization__forgot:focus-within,
+.authorization__forgot:focus-visible,
 .authorization__button:focus-visible,
 .registration__input:focus-visible,
 .authorization__input:focus-visible,
@@ -743,7 +742,7 @@ body {
 }
 
 
-.form-radio__input:focus+.form-radio__label {
+.form-radio__input:focus-visible+.form-radio__label {
 	outline: 2px solid #ff0004;
 	border-radius: 2px;
 }
