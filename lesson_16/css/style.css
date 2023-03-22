@@ -524,6 +524,10 @@ body {
 	border: 4px solid #000;
 }
 
+.radio__input:checked+.radio__label_value {
+	color: #000;
+}
+
 .radio__input:focus-visible~.radio__label {
 	outline: 1px solid #000;
 }
