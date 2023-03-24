@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>HW #17_2</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- <header></header> -->
+		<main class="page">
+			<section class=" page__tail tail">
+				<div class="tail__container">
+					<form action="https://jsonplaceholder.typicode.com/posts" class="tail__form tail-form" method="post">
+						<h2 class="tail-form__title">Billing Details</h2>
+						<div class="tail-form__inputs">
+							<div class="tail-form__body-input"><input required class="tail-form__input" type="text" name="name"
+									autocomplete="off" placeholder="First name*"></div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" type="text" name="last-name"
+									autocomplete="off" placeholder="Last name*"></div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" type="text" name="address"
+									autocomplete="off" placeholder="Address*"></div>
+							<div class="tail-form__body-input"><input class="tail-form__input" type="text" name="address2"
+									autocomplete="off" placeholder="Address line 2"></div>
+							<div class="tail-form__body-input tail-form__body-input_select">
+								<select class="tail-form__input tail-form__input_select " name="country" required>
+									<option>Country*</option>
+									<option value="USA">USA</option>
+									<option value="UK">UK</option>
+									<option value="Ireland">Ireland</option>
+									<option value="France">France</option>
+									<option value="Spain">Spain</option>
+								</select>
+							</div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" type="text" name="city/town"
+									autocomplete="off" placeholder="City/Town*"></div>
+							<div class="tail-form__body-input"> <input required class="tail-form__input" type="number"
+									name="postcode/zip" autocomplete="off" placeholder="Postcode / ZIP*"></div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" minlength="10" maxlength="13"
+									type="tel" name="phone1" autocomplete="off" placeholder="Phone*"></div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" type="number"
+									name="postcode2/zip2" autocomplete="off" placeholder="Postcode / ZIP*"></div>
+							<div class="tail-form__body-input"><input required class="tail-form__input" minlength="10" maxlength="13"
+									type="tel" name="phone2" autocomplete="off" placeholder="Phone*"></div>
+							<textarea class="tail-form__textarea" name="message" placeholder="Additional information"></textarea>
+						</div>
+
+
+						<div class="tail-form__checkbox checkbox">
+							<div class="checkbox__body">
+								<input class="checkbox__input" checked value="yes" id="create-01" type="checkbox" name="create">
+								<label class="checkbox__label" for="create-01">Create Account</label>
+							</div>
+							<div class="checkbox__body">
+								<input class="checkbox__input" value="yes" id="ship-01" type="checkbox" name="ship-to">
+								<label class="checkbox__label" for="ship-01">Ship to a different address?</label>
+							</div>
+						</div>
+
+
+						<div class="tail-form__coupon coupon">
+							<h3 class="coupon__title">Apply Coupon to get discount!</h3>
+							<div class="coupon__row">
+								<input class="coupon__input " type="text" name="coupon" autocomplete="off" placeholder="Coupon code">
+								<!-- розумію що це не кнопка відправки але поки зробив так =) -->
+								<button class="coupon__button" type="submit">Apply Code </button>
+							</div>
+						</div>
+
+					</form>
+
+					<div class="tail__details tail-details">
+					</div>
+				</div>
+			</section>
+			<section class=" page__crisp crisp">
+				<div class="crisp__container">
+					<div class="crisp__form crisp-form">
+						<h2 class="crisp-form__title crisp-title">Shipping Address</h2>
+
+						<form action="https://jsonplaceholder.typicode.com/posts" method="post"
+							class="crisp-form__authorization authorization">
+							<div class="authorization__wrapper">
+								<div class="authorization__item ">
+									<label class="authorization__label" for="email">Email Address <span>*</span></label>
+									<input class="authorization__input" id="email" type="email" required name="email" autocomplete="off"
+										placeholder="roni_cost@example.com">
+								</div>
+								<div class="authorization__item ">
+									<label class="authorization__label" for="password">Password</label>
+									<input class="authorization__input" minlength="8" id="password" type="password" required
+										name="password" autocomplete="off" placeholder="**************************">
+								</div>
+								<div class="authorization__item ">
+									<label class="authorization__label" for="p-code">Zip/Postal Code</label>
+									<input class="authorization__input" id="p-code" type="number" name="p-code">
+								</div>
+							</div>
+							<div class=" authorization__text">You already have an account with us. Sign in or
+								continue as guest.</div>
+							<button class="authorization__button" type="submit">login</button>
+							<button class="authorization__forgot" type="button">Forgot Your Password?</button>
+						</form>
+
+						<form action="https://jsonplaceholder.typicode.com/posts" method="post"
+							class="crisp-form__registration registration">
+							<div class="registration__wrapper">
+								<div class="registration__item ">
+									<label class="registration__label" for="name">First Name <span>*</span></label>
+									<input class="registration__input" id="name" type="text" required name="name" autocomplete="off">
+								</div>
+								<div class="registration__item ">
+									<label class="registration__label" for="last-name">Last Name <span>*</span></label>
+									<input class="registration__input" id="last-name" type="text" required name="last-name"
+										autocomplete="off">
+								</div>
+								<div class="registration__item ">
+									<label class="registration__label" for="company">Company</label>
+									<input class="registration__input" id="company" type="text" name="company" autocomplete="off">
+								</div>
+								<div class="registration__item registration__item_address">
+									<label class="registration__label" for="address">Street Address <span>*</span></label>
+									<input class="registration__input" id="address" type="text" required name="address"
+										autocomplete="off">
+									<input class="registration__input" type="text" name="address" autocomplete="off">
+									<input class="registration__input" type="text" name="address" autocomplete="off">
+								</div>
+								<div class="registration__item ">
+									<label class="registration__label" for="country">Country <span>*</span></label>
+									<input class="registration__input" id="country" type="text" required name="country"
+										autocomplete="off">
+								</div>
+								<div class="registration__item registration__item_select ">
+									<label class="registration__label" for="location">State/Province <span>*</span></label>
+									<select class="registration__input registration__input_select " name="location" required
+										id="location">
+										<option>Please select a region, state or province</option>
+										<option value="Kyiv">Kyiv</option>
+										<option value="Kharkiv">Kharkiv</option>
+										<option value="Odessa">Odessa</option>
+										<option value="Donetsk">Donetsk</option>
+										<option value="Ternopil">Ternopil</option>
+									</select>
+								</div>
+							</div>
+
+							<h2 class="registration__title crisp-title">Shipping Methods</h2>
+
+							<div class="registration__radio radio">
+								<div class="radio__wrapper">
+									<input class="radio__input" checked type="radio" name="price" id="price-5" value="$5.00">
+									<label class="radio__label radio__label_value" for="price-5">$5.00</label>
+									<label class="radio__label" for="price-5">Fixed</label>
+									<label class="radio__label" for="price-5">Flat Rate</label>
+								</div>
+								<div class="radio__wrapper">
+									<input class="radio__input" type="radio" name="price" id="price-10" value="$10.00">
+									<label class="radio__label radio__label_value" for="price-10">$10.00</label>
+									<label class="radio__label" for="price-10">Table Rate</label>
+									<label class="radio__label" for="price-10">Best Way</label>
+								</div>
+							</div>
+							<div class="registration__buttons">
+								<button class="registration__submit" type="submit">next</button>
+								<button class="registration__reset" type="reset">Back</button>
+							</div>
+
+						</form>
+					</div>
+
+					<div class="crisp__details"></div>
+				</div>
+			</section>
+			<section class="page__practice practice">
+				<div class="practice__container">
+					<form action="#" class="practice__form practice-form" method="post" enctype="multipart/form-data">
+						<div class="practice-form__item">
+							<input tabindex="1" type="text" name="username" placeholder="Enter your name" autocomplete="off" required>
+						</div>
+						<div class="practice-form__item">
+							<label for="name">Enter your name ---></label>
+							<input tabindex="2" type="text" name="username" placeholder="Enter your name" autocomplete="off" required
+								id="username">
+						</div>
+						<div class="practice-form__item">
+							<label for="email-01">Enter your email ---></label>
+							<input tabindex="3" type="email" name="email" placeholder="Enter your email" autocomplete="off" required
+								id="email-01">
+						</div>
+						<div class="practice-form__item">
+							<label for="pass">Enter your password ---></label>
+							<input tabindex="4" type="password" minlength="8" maxlength="12" name="pass"
+								placeholder="Enter your password" autocomplete="off" required id="pass">
+						</div>
+						<div class="practice-form__item">
+							<label for="phone">Enter your phone ---></label>
+							<input tabindex="5" type="tel" name="phone" placeholder="Enter your phone" autocomplete="off" required
+								id="phone">
+						</div>
+						<div class="practice-form__item">
+							<label for="age">Enter your age ---></label>
+							<input tabindex="6" type="number" name="age" placeholder="Enter your age" autocomplete="off" required
+								id="age">
+						</div>
+						<div class="practice-form__item">
+							<label>Disabled ---></label>
+							<input tabindex="7" type="hidden" disabled name="hd">
+						</div>
+						<div class="practice-form__item">
+							<label for="color">Choose your favorite color-></label>
+							<input tabindex="8" type="color" name="color" value="#00ff37" id="color">
+						</div>
+						<div class="practice-form__item">
+							<label for="search">Search ---></label>
+							<input tabindex="9" type="search" name="search" placeholder="Search" autocomplete="off" id="search">
+						</div>
+						<div class="practice-form__item">
+							<label for="file"> Send your file ---></label>
+							<input tabindex="10" type="file" multiple accept="audio/*,video/*,image/*" name="file" id="file">
+						</div>
+						<div class="practice-form__item">
+							<label for="date">Date ---></label>
+							<input tabindex="11" type="date" name="date" autocomplete="off" id="date">
+						</div>
+						<div class="practice-form__item">
+							<label for="range">Range ---></label>
+							<input tabindex="12" type="range" name="range" autocomplete="off" id="range">
+						</div>
+
+						<div class="practice-form__checkbox practice-checkbox">
+							<h3 class="practice-checkbox__title practice-title">Your choice is very important</h3>
+							<div class="practice-checkbox__item">
+								<input class="practice-checkbox__input" tabindex="13" checked id="checkbox-01" type="checkbox"
+									name="checkbox-01">
+								<label class="practice-checkbox__label" for="checkbox-01">pesda rusne</label>
+							</div>
+							<div class="checkbox__item">
+								<input class="practice-checkbox__input" tabindex="14" checked id="checkbox-02" type="checkbox"
+									name="checkbox-02">
+								<label class="practice-checkbox__label" for="checkbox-02">rusne pesda</label>
+							</div>
+							<div class="checkbox__item">
+								<input class="practice-checkbox__input" tabindex="15" checked id="checkbox-03" type="checkbox"
+									name="checkbox-03">
+								<label class="practice-checkbox__label" for="checkbox-03">putin-huilo</label>
+							</div>
+							<div class="checkbox__item">
+								<input class="practice-checkbox__input" tabindex="16" checked id="checkbox-04" type="checkbox"
+									name="checkbox-04">
+								<label class="practice-checkbox__label" for="checkbox-04">huilo-putin</label>
+							</div>
+						</div>
+						<div class="practice-form__radio form-radio">
+							<h3 class="form-radio__title practice-title">Favorites</h3>
+							<div class="form-radio__item">
+								<input class="form-radio__input" tabindex="17" type="radio" name="radio" id="radio-01">
+								<label class="form-radio__label" for="radio-01">pesda rusne</label>
+							</div>
+							<div class="form-radio__item">
+								<input class="form-radio__input" type="radio" name="radio" id="radio-02">
+								<label class="form-radio__label" for="radio-02">rusne pesda</label>
+							</div>
+							<div class="form-radio__item">
+								<input class="form-radio__input" checked type="radio" name="radio" id="radio-03">
+								<label class="form-radio__label" for="radio-03">putin-huilo</label>
+							</div>
+							<div class="form-radio__item">
+								<input class="form-radio__input" type="radio" name="radio" id="radio-04">
+								<label class="form-radio__label" for="radio-04">huilo-putin</label>
+							</div>
+						</div>
+						<div class="practice-form__text-area">
+							<h3 class="practice-form__title practice-title">Textarea</h3>
+							<label for="text-area">textarea</label>
+							<textarea tabindex="19" name="text-area" id="text-area" placeholder="textarea"></textarea>
+						</div>
+						<div class="practice-form__select">
+							<h3 class="practice-form__title practice-title">Select</h3>
+							<label for="select">Choose your favorite color</label>
+							<select tabindex="20" name="select" id="select">
+								<option value="green">green</option>
+								<option value="blue">blue</option>
+								<option value="red">red</option>
+								<option selected value="yellow">yellow</option>
+							</select>
+						</div>
+						<div class="practice-form__buttons buttons">
+							<button tabindex="21" type="button" class="buttons__button">simple button</button>
+							<button tabindex="22" type="submit" class="buttons__submit">submit</button>
+							<button tabindex="23" type="reset" class="buttons__reset">reset all</button>
+						</div>
+					</form>
+					<form class="probe__form" action="#" enctype="multipart/form-data" method="get">
+						<div class="probe__item">
+							<input class="probe__input" type="text" id="name-03" required placeholder="Enter your name">
+							<label class="probe__label" for="name-03">Enter <span>your</span> name</label>
+						</div>
+						<div class="probe__item-2">
+							<input class="probe__input-2" type="text" id="name-04" required placeholder="Enter your name">
+							<label class="probe__label-2" for="name-04">Enter <span> your </span> name</label>
+						</div>
+						<div class="probe__body probe-checkbox">
+							<div class="probe-checkbox__item">
+								<input class="probe-checkbox__input" type="checkbox" checked name="checkbox-probe"
+									id="checkbox-probe-01">
+								<label class="probe-checkbox__label" for="checkbox-probe-01">checkbox1</label>
+							</div>
+							<div class="probe-checkbox__item">
+								<input class="probe-checkbox__input" type="checkbox" name="checkbox-probe" id="checkbox-probe-02">
+								<label class="probe-checkbox__label" for="checkbox-probe-02">checkbox2</label>
+							</div>
+							<div class="probe-checkbox__item">
+								<input class="probe-checkbox__input" type="checkbox" name="checkbox-probe" id="checkbox-probe-03">
+								<label class="probe-checkbox__label" for="checkbox-probe-03">checkbox3</label>
+							</div>
+						</div>
+						<div class="probe__body probe-radio">
+							<div class="probe-radio__item">
+								<input class="probe-radio__input" type="radio" checked name="probe-radio" id="probe-radio-01">
+								<label class="probe-radio__label" for="probe-radio-01">radio1</label>
+							</div>
+							<div class="probe-radio__item">
+								<input class="probe-radio__input" type="radio" name="probe-radio" id="probe-radio-02">
+								<label class="probe-radio__label" for="probe-radio-02">radio2</label>
+							</div>
+							<div class="probe-radio__item">
+								<input class="probe-radio__input" type="radio" name="probe-radio" id="probe-radio-03">
+								<label class="probe-radio__label" for="probe-radio-03">radio3</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</main>
+		<!-- <footer></footer> -->
+	</div>
+</body>
+
+</html>
