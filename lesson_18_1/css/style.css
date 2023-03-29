@@ -655,7 +655,7 @@ body {
 }
 
 .article-previev__pages {
-	display: inline-flex;
+	display: flex;
 	gap: 15px;
 
 }
@@ -751,6 +751,10 @@ body {
 
 	.article-previev__box {
 		padding-top: 5px;
+	}
+
+	.article-previev__pages {
+		justify-content: center;
 	}
 
 }
