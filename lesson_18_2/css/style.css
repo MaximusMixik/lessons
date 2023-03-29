@@ -286,7 +286,9 @@ body {
 		left: 0;
 		background-color: #495057;
 		border-radius: 4px;
+		transition: transform 400ms ease;
 	}
+
 
 	.header__burger span {
 		top: 50%;
@@ -319,6 +321,20 @@ body {
 
 	.active .header-menu__list {
 		right: 0;
+	}
+
+	.active .header__burger span {
+		display: none;
+	}
+
+	.active .header__burger::after {
+		transform: rotate(-45deg);
+		top: 50%;
+	}
+
+	.active .header__burger::before {
+		transform: rotate(45deg);
+		top: 50%;
 	}
 
 	.header-menu__list :not(:last-child) {
