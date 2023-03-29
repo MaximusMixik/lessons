@@ -457,6 +457,10 @@ body {
 		padding: 0;
 	}
 
+	.page__slider {
+		padding-bottom: 30px;
+	}
+
 	.swiper-slide {
 		padding-bottom: 70%;
 	}
@@ -477,6 +481,13 @@ body {
 	.swiper-pagination.swiper-pagination-fraction {
 		margin-bottom: 5px;
 	}
+}
+
+@media(min-width:530px) {
+	.swiper-slide {
+		border-radius: 5px;
+	}
+
 }
 
 @media (any-hover: hover) {
@@ -580,6 +591,7 @@ body {
 	position: relative;
 	padding-bottom: 33.06%;
 	overflow: hidden;
+	border-radius: 3px;
 }
 
 .article-previev__image img {
