@@ -179,6 +179,7 @@ body {
 	margin-left: -20px;
 	background-color: #E5E5E5;
 	transform: translate(0, -15%);
+	pointer-events: none;
 }
 
 
@@ -374,7 +375,7 @@ body {
 
 @media (any-hover: hover) {
 
-	.header__logo:hover img {
+	.header__logo:hover {
 		transform: scale(1.2);
 	}
 
@@ -1020,6 +1021,12 @@ body {
 	.footer__logo:hover {
 		transform: scale(1.1);
 	}
+
+	.footer-menu__link:hover,
+	.footer__social-link:hover {
+		color: #fff;
+	}
+
 
 	.footer-menu__link:hover:after,
 	.footer__social-link:hover::after {
