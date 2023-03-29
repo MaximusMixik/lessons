@@ -244,6 +244,7 @@ body {
 		left: 0;
 		background-color: #495057;
 		border-radius: 4px;
+		transition: transform 400ms ease;
 	}
 
 	.header__burger span {
@@ -275,6 +276,19 @@ body {
 		transition: right 700ms ease;
 	}
 
+	.active .header__burger span {
+		display: none;
+	}
+
+	.active .header__burger::after {
+		transform: rotate(-45deg);
+		top: 50%;
+	}
+
+	.active .header__burger::before {
+		transform: rotate(45deg);
+		top: 50%;
+	}
 
 
 	.active .header-menu__list {
