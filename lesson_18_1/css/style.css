@@ -1,5 +1,4 @@
 @import url("reset.css");
-/* @import url("common.css"); */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,500,700&display=swap");
 
@@ -69,6 +68,7 @@ body {
 	align-items: flex-end;
 	position: relative;
 	z-index: 5;
+	transition: transform 400ms ease;
 }
 
 .header__logo::after {
@@ -145,15 +145,7 @@ body {
 	transition: background-color 400ms ease-out;
 }
 
-
-
 /* ============================ */
-
-/* .header-menu__courses-menu,
-.header-menu__inspiration-menu {} */
-
-/* .courses-menu__list,
-.inspiration-menu__list {} */
 
 .courses-menu__link,
 .inspiration-menu__link {
@@ -163,8 +155,6 @@ body {
 	color: rgba(248, 249, 250, 0.6);
 	transition: color 400ms ease;
 }
-
-
 
 @media(min-width:767px) {
 	.header__burger {
@@ -315,6 +305,9 @@ body {
 }
 
 @media (any-hover: hover) {
+	.header__logo:hover {
+		transform: scale(1.2);
+	}
 
 	.header__link:hover,
 	.header-menu__link:hover {
@@ -943,6 +936,11 @@ body {
 @media (any-hover: hover) {
 	.footer__logo:hover {
 		transform: scale(1.1);
+	}
+
+	.footer-menu__link:hover,
+	.footer__social-link:hover {
+		color: #fff;
 	}
 
 	.footer-menu__link:hover:after,
