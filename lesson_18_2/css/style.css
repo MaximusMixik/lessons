@@ -873,15 +873,13 @@ body {
 
 }
 
-@media(min-width:991px) {
+@media (any-hover: hover) {
 	.trending-column__content {
 		opacity: 0;
 		visibility: hidden;
 		transition: opacity 700ms ease 100ms;
 	}
-}
 
-@media (any-hover: hover) {
 	.trending__column:hover .trending-column__content {
 		visibility: visible;
 		opacity: 1;
