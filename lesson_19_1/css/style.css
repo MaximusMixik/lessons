@@ -708,7 +708,7 @@ body {
 .featured-body__content {
 	padding: 30px;
 	display: grid;
-	grid-auto-rows: repeat(3, auto);
+	grid-auto-rows: repeat(3, 1fr);
 }
 
 .featured-body__content>:not(:last-child) {
