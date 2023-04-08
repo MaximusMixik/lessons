@@ -274,13 +274,27 @@ body {
     display: -ms-flexbox;
     display: flex;
     flex-direction: column;
-    background: #02020f url(../img/our__bg.png) bottom right/contain no-repeat;
+    background-color: #02020f;
     padding: 100px 20px 20px;
     gap: 25px;
     overflow: auto;
+    z-index: 1;
     -webkit-transition: all 400ms ease;
     -o-transition: all 400ms ease;
     transition: all 400ms ease;
+  }
+  .menu__list::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: url(../img/our__bg.png) bottom right/contain no-repeat;
+    -webkit-transform-origin: bottom right;
+        -ms-transform-origin: bottom right;
+            transform-origin: bottom right;
+    animation: decoration 6s ease-in infinite alternate-reverse forwards;
   }
   .menu__link {
     font-size: 2rem;
@@ -447,6 +461,26 @@ body {
   100% {
     -webkit-transform: translateX(10%) rotate(-4deg);
             transform: translateX(10%) rotate(-4deg);
+  }
+}
+@-webkit-keyframes decoration {
+  0% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  100% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+}
+@keyframes decoration {
+  0% {
+    -webkit-transform: rotate(3deg);
+            transform: rotate(3deg);
+  }
+  100% {
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
   }
 }
 .who-are__container {
@@ -820,6 +854,11 @@ body {
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
+  -webkit-transform-origin: bottom right;
+      -ms-transform-origin: bottom right;
+          transform-origin: bottom right;
+  -webkit-animation: decoration 5s ease infinite alternate forwards;
+          animation: decoration 5s ease infinite alternate forwards;
 }
 @media (any-hover: hover) {
   .works-body__item:hover::after {
@@ -846,6 +885,9 @@ body {
   padding: 22px;
   position: relative;
   z-index: 3;
+}
+.works-item__content::after {
+  animation: decoration 4s ease infinite alternate-reverse forwards;
 }
 .works-item__title {
   font-family: "Nico Moji";
@@ -1178,7 +1220,12 @@ body {
   height: 100%;
   bottom: 0;
   right: 0;
+  -webkit-transform-origin: bottom right;
+      -ms-transform-origin: bottom right;
+          transform-origin: bottom right;
   background: url(../img/footer__bg.png) bottom right/contain no-repeat;
+  -webkit-animation: decoration 8s ease infinite alternate forwards;
+          animation: decoration 8s ease infinite alternate forwards;
   z-index: 1;
 }
 .footer__container {
