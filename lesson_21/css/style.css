@@ -752,6 +752,7 @@ body.lock {
   padding: 0.625rem;
   border-radius: 0.5rem;
 }
+
 .articles-body__item {
   display: grid;
   grid-auto-flow: row;
@@ -831,7 +832,7 @@ body.lock {
   }
 }
 @media (any-hover: hover) {
-  .articles-body__date a:hover {
+  .articles-body__date time:hover {
     text-decoration: underline;
   }
 }
@@ -1198,7 +1199,7 @@ body.lock {
   }
 }
 @media (any-hover: hover) {
-  .world-body__date a:hover {
+  .world-body__date time:hover {
     text-decoration: underline;
   }
 }

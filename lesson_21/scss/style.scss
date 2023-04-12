@@ -570,11 +570,9 @@ body {
 		border-radius: rem(8);
 	}
 
-	&__item {
-	}
+	// &__item {}
 
-	&__link {
-	}
+	// &__link {}
 }
 
 .articles-body {
@@ -648,7 +646,7 @@ body {
 			}
 		}
 	}
-	&__date a {
+	&__date time {
 		@media (any-hover: hover) {
 			&:hover {
 				text-decoration: underline;
@@ -975,7 +973,7 @@ body {
 		}
 	}
 
-	&__date a {
+	&__date time {
 		@media (any-hover: hover) {
 			&:hover {
 				text-decoration: underline;
