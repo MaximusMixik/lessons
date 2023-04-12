@@ -11,7 +11,7 @@
 
 <body>
 	<div class="wrapper">
-		<header class="wrapper__header header">
+		<header class="wrapper__header header" id="header">
 			<div class="header__container">
 				<div class="header__logo"><a href="#">VENCE</a></div>
 				<nav class="header__menu menu">
@@ -72,10 +72,21 @@
 					</div>
 				</div>
 			</section>
+
 			<div class="articles">
 				<div class="articles__container">
 					<div class="articles__head articles-head">
-						<div class="articles-head__btn"><button>Categories</button></div>
+						<div class="articles-head__box"><button type="button" class="articles-head__btn">Categories</button>
+							<nav class="articles-head__menu articles-menu">
+								<ul class="articles-menu__list">
+									<li class="articles-menu__item"><a href="#" class="articles-menu__link">Show All</a></li>
+									<li class="articles-menu__item"><a href="#" class="articles-menu__link">Technology</a></li>
+									<li class="articles-menu__item"><a href="#" class="articles-menu__link">Culture</a></li>
+									<li class="articles-menu__item"><a href="#" class="articles-menu__link">Fashion</a></li>
+									<li class="articles-menu__item"><a href="#" class="articles-menu__link">Trending</a></li>
+								</ul>
+							</nav>
+						</div>
 						<div class="articles-head__actions">
 							<button class="articles-head__columns active ">3 Column</button>
 							<button class="articles-head__columns">4 Column</button>

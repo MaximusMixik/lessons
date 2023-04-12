@@ -135,9 +135,12 @@ body.lock {
   top: 0;
   left: 0;
   z-index: 50;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
+.header.smaller .header__container {
+  padding: 0.9375rem;
+  min-height: 3.75rem;
+}
 .header__container {
   padding: 2.25rem 0.9375rem;
   display: -webkit-box;
@@ -510,7 +513,11 @@ body.lock {
   -webkit-transition: opacity 700ms ease-in-out;
   -o-transition: opacity 700ms ease-in-out;
   transition: opacity 700ms ease-in-out;
-  opacity: 0;
+}
+@media (min-width: 47.9375em) {
+  .main__content {
+    opacity: 0;
+  }
 }
 .main__content > :not(:last-child) {
   margin-bottom: 0.9375rem;
@@ -657,24 +664,17 @@ body.lock {
   }
 }
 
-.articles-head__btn {
+.articles-head__box {
+  position: relative;
   text-align: left;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  position: relative;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  gap: 7px;
-}
-.articles-head__btn::after {
-  content: "+";
 }
 .articles-head button {
   position: relative;
 }
-.articles-head button::after {
+.articles-head button::before {
   content: "";
   position: absolute;
   bottom: 0.0625rem;
@@ -687,9 +687,42 @@ body.lock {
   transition: width 300ms ease;
 }
 @media (any-hover: hover) {
-  .articles-head button:hover::after {
+  .articles-head button:hover::before {
     width: 100%;
   }
+}
+.articles-head__btn::after {
+  content: "+";
+  position: absolute;
+  width: 0.3125pxrem;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translate(140%, -50%);
+      -ms-transform: translate(140%, -50%);
+          transform: translate(140%, -50%);
+}
+.articles-head__menu {
+  position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding-top: 0.625rem;
+  top: 100%;
+  left: -20%;
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+.articles-head__menu.active {
+  visibility: visible;
+  opacity: 1;
+  left: 0;
 }
 .articles-head__columns.active {
   color: #495057;
@@ -713,6 +746,12 @@ body.lock {
   }
 }
 
+.articles-menu__list {
+  background-color: #212529;
+  color: #e5e5e5;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+}
 .articles-body__item {
   display: grid;
   grid-auto-flow: row;
