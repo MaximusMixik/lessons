@@ -19,7 +19,6 @@ body {
 	overflow: hidden;
 	min-height: 100%;
 	position: relative;
-
 	display: flex;
 	flex-direction: column;
 }
@@ -60,6 +59,9 @@ body {
 		@media (max-width: em(991.98)) {
 			padding: rem(15);
 			min-height: rem(60);
+		}
+		@media (max-width: em(447.98)) {
+			column-gap: rem(15);
 		}
 	}
 
@@ -104,23 +106,38 @@ body {
 			opacity: 1;
 		}
 	}
-
-	&__search {
+	&__form {
 		position: relative;
 		z-index: 3;
 		display: inline-flex;
 		align-items: center;
 		column-gap: rem(25);
-
-		&::before {
-			content: "";
-			width: rem(1);
-			height: rem(25);
-			top: 0;
-			left: 0;
-			background-color: $colorOpacity;
+		@media (max-width: em(447.98)) {
+			column-gap: rem(15);
 		}
+	}
+
+	&__input {
+		max-width: rem(1);
+		transition: all 300ms ease-in-out;
+		min-height: rem(25);
+		background-color: $colorOpacity;
+		&:focus-visible {
+			max-width: rem(130);
+			padding: rem(3) rem(7);
+			border-radius: rem(8);
+			background-color: $colorWhite;
+			outline: rem(3) solid $colorDecore;
+			@media (max-width: em(447.98)) {
+				max-width: rem(100);
+			}
+		}
+	}
+
+	&__search {
 		& img {
+			width: rem(12);
+			height: rem(20);
 			transition: transform 400ms ease-out;
 			@media (max-width: em(767.98)) {
 				width: rem(25);
@@ -324,6 +341,7 @@ body {
 	flex: 1 1 auto;
 	position: relative;
 	height: 100vh;
+	min-height: rem(400);
 	@media (any-hover: hover) {
 		&:hover .main__content {
 			opacity: 1;
@@ -341,14 +359,16 @@ body {
 		position: relative;
 		display: flex;
 		z-index: 2;
-
+		padding: rem(100) rem(15);
 		pointer-events: none;
+		@media (max-width: em(767.98)) {
+			padding-top: rem(60);
+		}
 	}
 	&__content {
 		align-self: flex-end;
 		max-width: rem(605);
 		font-size: rem(25);
-		padding-bottom: rem(100);
 		transition: opacity 700ms ease-in-out;
 		@media (min-width: em(767)) {
 			opacity: 0;
@@ -401,6 +421,7 @@ body {
 		max-width: rem(350);
 	}
 }
+
 .main-swiper {
 	// &__wrapper {
 	// }
@@ -572,7 +593,29 @@ body {
 
 	// &__item {}
 
-	// &__link {}
+	&__link {
+		transition: color 400ms ease;
+		position: relative;
+		&::before {
+			position: absolute;
+			content: "";
+			width: 0;
+			height: rem(1);
+			bottom: 0;
+			left: 50%;
+			background-color: $colorGray;
+			transition: width 400ms ease, left 400ms ease;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: $colorWhite;
+				&:hover::before {
+					width: 100%;
+					left: 0;
+				}
+			}
+		}
+	}
 }
 
 .articles-body {
@@ -1100,21 +1143,3 @@ body {
 		}
 	}
 }
-// @media (max-width: em(991.98))
-// @media (max-width: em(767.98))
-// @media (max-width: em(447.98))
-
-//	@media (any-hover: hover){
-// 	&:hover{
-
-// 	}
-// }
-
-// @media (min-width: em(767))
-// @media (min-width: em(448))
-
-// font-size: rem(50);
-// margin-bottom: em(30, 50);
-// @media (max-width: em(767.98)) {
-// 	font-size: rem(24);
-// }
