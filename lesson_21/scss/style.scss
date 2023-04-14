@@ -457,12 +457,14 @@ body {
 	&__head {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		gap: rem(20);
 		font-weight: 500;
 		line-height: 2.08;
 		margin-bottom: rem(44);
 		@media (max-width: em(767.98)) {
 			margin-bottom: rem(25);
+			justify-content: center;
 		}
 	}
 
@@ -510,8 +512,6 @@ body {
 .articles-head {
 	&__box {
 		position: relative;
-		text-align: left;
-		flex: 1 1 auto;
 	}
 
 	& button {
@@ -562,6 +562,14 @@ body {
 			opacity: 1;
 			left: 0;
 		}
+		@media (max-width: em(767.98)) {
+			top: -50%;
+			left: 200%;
+			&.active {
+				top: -30%;
+				left: 130%;
+			}
+		}
 	}
 
 	// &__actions {
@@ -574,7 +582,7 @@ body {
 		@media (max-width: em(991.98)) {
 			display: none;
 		}
-		@media (min-width: em(992)) {
+		@media (min-width: em(991)) {
 			color: $colorGray;
 			&:not(:last-child) {
 				margin-right: rem(20);
@@ -742,7 +750,7 @@ body {
 			justify-content: flex-end;
 			align-items: flex-end;
 		}
-		@media (min-width: em(992)) {
+		@media (min-width: em(991)) {
 			padding: 6.944444% 9.583333% 6.944444% rem(15);
 		}
 		@media (min-width: em(1440)) {
@@ -821,7 +829,7 @@ body {
 				margin-bottom: rem(8);
 			}
 		}
-		@media (min-width: em(991.98)) {
+		@media (min-width: em(991)) {
 			padding-left: rem(30);
 			& > :not(:last-child) {
 				display: inline-block;
