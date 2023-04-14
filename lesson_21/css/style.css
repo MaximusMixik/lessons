@@ -512,11 +512,6 @@ body.lock {
   height: 100vh;
   min-height: 25rem;
 }
-@media (any-hover: hover) {
-  .main:hover .main__content {
-    opacity: 1;
-  }
-}
 .main__swiper {
   position: absolute;
   width: 100%;
@@ -544,14 +539,8 @@ body.lock {
       align-self: flex-end;
   max-width: 37.8125rem;
   font-size: 1.5625rem;
-  -webkit-transition: opacity 700ms ease-in-out;
-  -o-transition: opacity 700ms ease-in-out;
-  transition: opacity 700ms ease-in-out;
-}
-@media (min-width: 47.9375em) {
-  .main__content {
-    opacity: 0;
-  }
+  -webkit-animation: title-animation 3s ease forwards;
+          animation: title-animation 3s ease forwards;
 }
 .main__content > :not(:last-child) {
   margin-bottom: 0.9375rem;
@@ -620,6 +609,31 @@ body.lock {
      object-fit: cover;
 }
 
+@-webkit-keyframes title-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-20%, 100%);
+            transform: translate(-20%, 100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes title-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-20%, 100%);
+            transform: translate(-20%, 100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
 .articles__container {
   padding: 6.25rem 0.9375rem;
 }
@@ -731,9 +745,12 @@ body.lock {
   width: 0.3125pxrem;
   right: 0;
   top: 50%;
-  -webkit-transform: translate(140%, -50%);
-      -ms-transform: translate(140%, -50%);
-          transform: translate(140%, -50%);
+  -webkit-transform: translate(150%, -50%);
+      -ms-transform: translate(150%, -50%);
+          transform: translate(150%, -50%);
+}
+.articles-head__btn.active::after {
+  content: "-";
 }
 .articles-head__menu {
   position: absolute;
@@ -952,6 +969,11 @@ body.lock {
 @media (min-width: 62em) {
   .featured__content {
     padding: 6.944444% 9.583333% 6.944444% 0.9375rem;
+  }
+}
+@media (min-width: 90em) {
+  .featured__content {
+    padding: 6.25rem 8.5625rem 6.25rem 0.9375rem;
   }
 }
 .featured__swiper {

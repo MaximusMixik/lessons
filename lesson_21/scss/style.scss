@@ -342,11 +342,7 @@ body {
 	position: relative;
 	height: 100vh;
 	min-height: rem(400);
-	@media (any-hover: hover) {
-		&:hover .main__content {
-			opacity: 1;
-		}
-	}
+
 	&__swiper {
 		position: absolute;
 		width: 100%;
@@ -369,10 +365,7 @@ body {
 		align-self: flex-end;
 		max-width: rem(605);
 		font-size: rem(25);
-		transition: opacity 700ms ease-in-out;
-		@media (min-width: em(767)) {
-			opacity: 0;
-		}
+		animation: title-animation 3s ease forwards;
 		& > :not(:last-child) {
 			margin-bottom: rem(15);
 		}
@@ -408,6 +401,7 @@ body {
 		}
 	}
 }
+
 .content {
 	&__title {
 		font-weight: 700;
@@ -435,6 +429,16 @@ body {
 			left: 0;
 			object-fit: cover;
 		}
+	}
+}
+@keyframes title-animation {
+	0% {
+		opacity: 0;
+		transform: translate(-20%, 100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
 	}
 }
 // =======articles==========
@@ -503,7 +507,6 @@ body {
 		}
 	}
 }
-
 .articles-head {
 	&__box {
 		position: relative;
@@ -537,7 +540,10 @@ body {
 			width: rem(5px);
 			right: 0;
 			top: 50%;
-			transform: translate(140%, -50%);
+			transform: translate(150%, -50%);
+		}
+		&.active::after {
+			content: "-";
 		}
 	}
 	&__menu {
@@ -738,6 +744,9 @@ body {
 		}
 		@media (min-width: em(992)) {
 			padding: 6.944444% 9.583333% 6.944444% rem(15);
+		}
+		@media (min-width: em(1440)) {
+			padding: rem(100) rem(137) rem(100) rem(15);
 		}
 	}
 
