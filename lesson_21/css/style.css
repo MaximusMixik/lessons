@@ -205,9 +205,7 @@ body.lock {
 @media (max-width: 47.99875em) {
   .header__menu {
     position: fixed;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
+    width: 18.75rem;
     height: 100%;
     top: 0;
     right: -100%;
@@ -218,8 +216,26 @@ body.lock {
     -o-transition: right 600ms ease, opacity 400ms ease-in;
     transition: right 600ms ease, opacity 400ms ease-in;
   }
+  .header__menu::after {
+    content: "";
+    position: fixed;
+    width: 18.75rem;
+    height: 5rem;
+    top: 0;
+    right: -100%;
+    background-color: #495057;
+    z-index: 2;
+    opacity: 0;
+    -webkit-transition: right 600ms ease, opacity 400ms ease-in;
+    -o-transition: right 600ms ease, opacity 400ms ease-in;
+    transition: right 600ms ease, opacity 400ms ease-in;
+  }
 }
 .header__menu.active {
+  right: 0%;
+  opacity: 1;
+}
+.header__menu.active::after {
   right: 0%;
   opacity: 1;
 }
@@ -343,6 +359,7 @@ body.lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   color: rgba(248, 249, 250, 0.5);
   font-weight: 500;
   font-size: 0.75rem;
@@ -672,7 +689,7 @@ body.lock {
 }
 .articles__body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(18.125rem, 1fr));
   gap: 2.8125rem 1.875rem;
   margin-bottom: 3.75rem;
 }
@@ -714,7 +731,7 @@ body.lock {
   .articles__link:hover {
     background-color: #f8f9fa;
     color: #212529;
-    outline: 1px solid #212529;
+    outline: 0.0625rem solid #212529;
   }
 }
 
@@ -744,7 +761,7 @@ body.lock {
 .articles-head__btn::after {
   content: "+";
   position: absolute;
-  width: 0.3125pxrem;
+  width: 0.3125rem;
   right: 0;
   top: 50%;
   -webkit-transform: translate(150%, -50%);
@@ -893,12 +910,12 @@ body.lock {
   top: 12%;
   text-align: center;
   font-weight: 700;
-  font-size: 8px;
+  font-size: 0.5rem;
   line-height: 2.5;
   color: #f8f9fa;
-  padding: 5px;
+  padding: 0.3125rem;
   background: rgba(33, 37, 41, 0.3);
-  border-radius: 3px;
+  border-radius: 0.3125rem;
   -webkit-transition: background-color 400ms ease-out;
   -o-transition: background-color 400ms ease-out;
   transition: background-color 400ms ease-out;
@@ -936,7 +953,7 @@ body.lock {
   transition: color 500ms ease-out;
 }
 .articles-body__author {
-  border-top: 1px solid #e5e5e5;
+  border-top: 0.0625rem solid #e5e5e5;
   padding-top: 0.9375rem;
 }
 @media (any-hover: hover) {
@@ -1158,7 +1175,7 @@ body.lock {
           justify-content: center;
   text-align: center;
   max-width: 26.25rem;
-  min-height: 400px;
+  min-height: 25rem;
   margin: 0 auto;
   z-index: 3;
   padding: 1.25rem;
@@ -1278,12 +1295,12 @@ body.lock {
   top: 12%;
   text-align: center;
   font-weight: 700;
-  font-size: 8px;
+  font-size: 0.5rem;
   line-height: 2.5;
   color: #f8f9fa;
-  padding: 5px;
+  padding: 0.3125rem;
   background: rgba(33, 37, 41, 0.3);
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   -webkit-transition: background-color 400ms ease-out;
   -o-transition: background-color 400ms ease-out;
   transition: background-color 400ms ease-out;
@@ -1321,7 +1338,7 @@ body.lock {
           align-items: center;
   padding: 2.5rem 0;
   gap: 1.25rem;
-  border-bottom: 1px solid rgba(248, 249, 250, 0.5);
+  border-bottom: 0.1875rem solid rgba(248, 249, 250, 0.5);
 }
 @media (max-width: 27.99875em) {
   .footer__head {
@@ -1416,7 +1433,7 @@ body.lock {
   position: absolute;
   height: 0.125rem;
   bottom: 0.125rem;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   width: 0;
   left: 50%;
   background-color: #ddbea9;
