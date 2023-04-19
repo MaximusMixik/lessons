@@ -14,7 +14,6 @@
     <header class="wrapper__header header" id="header">
       <div class="header__container">
         <a href="index.html" class="header__logo"><img src="img/svg/logo.svg" alt="logo"></a>
-
         <nav class="header__menu menu">
           <ul class="menu__list">
             <li class="menu__item">
@@ -44,8 +43,7 @@
             layout.</div>
         </div>
       </section>
-
-      <section class="contact">
+      <div class="contact">
         <div class="contact__container">
           <form action="#" enctype="multipart/form-data" method="post" class="contact__form form">
             <div class="form__row">
@@ -60,18 +58,19 @@
             </div>
             <div class="form__item">
               <label class="form__label" for="contact-email">Email</label>
-              <input class="form__input" required type="contact-email" name="contact-email" id="contact-email"
+              <input class="form__input" required type="email" name="contact-email" id="contact-email"
                 placeholder="Email">
             </div>
             <div class="form__item">
-              <label class="form__label" required for="phone-number">Phone Number</label>
+              <label class="form__label" for="phone-number">Phone Number</label>
               <div class="form__box form-box">
                 <select class="form-box__select" name="countrie" id="countrie">
                   <option value="">US</option>
                   <option value="">UK</option>
-                  <option value="">Spain</option>
-                  <option value="">France</option>
+                  <option value="">Sp</option>
+                  <option value="">Fr</option>
                 </select>
+                <label class="form-box__label" for="countrie"></label>
                 <input class="form-box__input" type="tel" name="phone-number" id="phone-number"
                   placeholder="Phone Number">
               </div>
@@ -84,7 +83,7 @@
 
           </form>
         </div>
-      </section>
+      </div>
       <section class="location">
         <div class="location__container">
           <h3 class="location__title-low title-low">Loaction</h3>
@@ -92,26 +91,30 @@
             <div class="location-body__item">
               <div class="location-body__box">
                 <h2 class="location-body__title title">Visit Our Stores</h2>
-                <a href="#" class="location-body__link">Find us at these locations.</a>
+                <a href="https://goo.gl/maps/QLMovLW8HfDXAm2A9" class="location-body__link">Find us at these
+                  locations.</a>
               </div>
               <div class="location-body__box">
                 <h4 class="location-body__title-in title-in">Email</h4>
-                <a href="#" class="location-body__link">dananz@gmail.com</a>
+                <a href="mailto:dananz@gmail.com" class="location-body__link">dananz@gmail.com</a>
               </div>
               <div class="location-body__box">
                 <h4 class="location-body__title-in title-in">Phone</h4>
-                <a href="#" class="location-body__link">+62 815 002 1000</a>
+                <a href="tel:+628150021000" class="location-body__link">+62 815 002 1000</a>
               </div>
             </div>
             <div class="location-body__item">
               <div class="location-body__box location-body__box_big">
-                <h4 class="location-body__title-in title-in">Jakarta</h4>
+                <h4 class="location-body__title-in title-in"><a a href="https://goo.gl/maps/QLMovLW8HfDXAm2A9"
+                    target="_blank">Jakarta</a></h4>
                 <p class="location-body__text">Customize your interior design into a dream place with the best designers
                   and quality furniture. We try our best to
                   fulfill your expectations.</p>
               </div>
               <div class="location-body__box location-body__box_big">
-                <h4 class="location-body__title-in title-in">Yogyakarta</h4>
+                <h4 class="location-body__title-in title-in">
+                  <a a href="https://goo.gl/maps/k5owpgeLQQA6TSCS6" target="_blank"> Yogyakarta</a>
+                </h4>
                 <p class="location-body__text">Customize your interior design into a dream place with the best designers
                   and quality
                   furniture. We try our best to
@@ -120,13 +123,15 @@
             </div>
             <div class="location-body__item">
               <div class="location-body__box location-body__box_big">
-                <h4 class="location-body__title-in title-in">Surakarta</h4>
+                <h4 class="location-body__title-in title-in"><a href="https://goo.gl/maps/8eGDVUHAuW4Q3wQi9"
+                    target="_blank"> Surakarta</a></h4>
                 <p class="location-body__text">Customize your interior design into a dream place with the best designers
                   and quality furniture. We try our best to
                   fulfill your expectations.</p>
               </div>
               <div class="location-body__box location-body__box_big">
-                <h4 class="location-body__title-in title-in">Bandung</h4>
+                <h4 class="location-body__title-in title-in"> <a href="https://goo.gl/maps/6xmtZK1hQ3k57CUK7"
+                    target="_blank">Bandung</a></h4>
                 <p class="location-body__text">Customize your interior design into a dream place with the best designers
                   and quality
                   furniture. We try our best to
@@ -138,7 +143,7 @@
       </section>
       <section class="dream-place">
         <div class="dream-place__container">
-          <h2 class=" dream-place__title title title_white">let's discuss making your interior like a dream place!</h2>
+          <h2 class=" dream-place__title title title_white">Let's discuss making your interior like a dream place!</h2>
           <div class="dream-place__content">
             <div class="dream-place__text">Contact us below to work together to build your amazing interior</div>
             <a href="contact.html" class="dream-place__btn">Contact Us</a>
@@ -158,7 +163,13 @@
             <div class="footer-form__body">
               <input class="footer-form__input" id="email" name="email" type="email" placeholder="Email Address">
               <label class="footer-form__label" for="email">Email Address</label>
-              <button class="footer-form__btn" type="submit"><img src="img/svg/form__arrow.svg" alt="send"></button>
+              <button class="footer-form__btn" type="submit"><svg class="arrow" width="32" height="32"
+                  viewBox="0 0 32 32" fill="none" class xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.66699 16H25.3337" stroke="black" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M16 6.66669L25.3333 16L16 25.3334" stroke="black" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></button>
             </div>
           </form>
           <div class="footer-contact__social">
