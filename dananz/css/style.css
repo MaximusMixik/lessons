@@ -1072,12 +1072,12 @@ body.lock {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    gap: 0.625rem;
   }
 }
 .home-service-body__item::before {
   font-weight: 600;
   font-size: 1.5rem;
+  min-width: 2.5rem;
   line-height: 1.4;
   color: #333333;
   counter-increment: item;
@@ -1086,9 +1086,10 @@ body.lock {
 @media (min-width: 27.9375em) {
   .home-service-body__item::before {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 7.361268%;
-            flex: 0 0 7.361268%;
-    padding-right: 4.530011%;
+        -ms-flex: 0 0 7.7135%;
+            flex: 0 0 7.7135%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 .home-service-body__link {
