@@ -10,3 +10,12 @@ headerBurger.forEach(function (item) {
   };
 });
 
+
+// header scroll
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 100) {
+    header.classList.add("smaller");
+  } else {
+    header.classList.remove("smaller");
+  }
+});
