@@ -12,8 +12,8 @@ const reviewsSwiper = new Swiper('.reviews__swiper', {
       slidesPerView: 1,
       freeMode: true,
     autoHeight: true,
-  // variableWidth:false,
-      // watchOverflow: true,
+  variableWidth:false,
+      watchOverflow: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -27,28 +27,28 @@ const reviewsSwiper = new Swiper('.reviews__swiper', {
 });
 
 // tabs
-// const tabNavItems = document.querySelectorAll('.decision-categories__button');
-// const tabItems = document.querySelectorAll('.item-tabs');
-// document.addEventListener("click", function (e) {
-//   const targetElement = e.target;
-//   let currentActiveIndex = null;
-//    let newActiveIndex = null;
-//   if (targetElement.closest('.decision-categories__button')) {
-//     tabNavItems.forEach((tabNavItem, index) => {
-//       if (tabNavItem.classList.contains('active')) {
-//         currentActiveIndex = index;
-//         tabNavItem.classList.remove('active');
-//       }
-//        if (tabNavItem === targetElement) {
-//         newActiveIndex = index;
-//       }
-//     });
-//     targetElement.classList.add('active');
-//     tabItems[currentActiveIndex].classList.remove('active');
-//     tabItems[newActiveIndex].classList.add('active');
+const tabNavItems = document.querySelectorAll('.decision-categories__item');
+const tabItems = document.querySelectorAll('.item-tabs');
+document.addEventListener("click", function (e) {
+  const targetElement = e.target;
+  let currentActiveIndex = null;
+   let newActiveIndex = null;
+  if (targetElement.closest('.decision-categories__item')) {
+    tabNavItems.forEach((tabNavItem, index) => {
+      if (tabNavItem.classList.contains('active')) {
+        currentActiveIndex = index;
+        tabNavItem.classList.remove('active');
+      }
+       if (tabNavItem === targetElement) {
+        newActiveIndex = index;
+      }
+    });
+    targetElement.classList.add('active');
+    tabItems[currentActiveIndex].classList.remove('active');
+    tabItems[newActiveIndex].classList.add('active');
     
-//   }
-// });
+  }
+});
 
 // burger
 let header__burger = document.querySelectorAll(".header__burger");

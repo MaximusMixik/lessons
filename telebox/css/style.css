@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700,800&display=swap");
-.out-row__privacy, .out-row__agreement, .footer-body__link, .bread-crumbs__next {
+.out-row__privacy, .out-row__agreement, .footer-body__link {
   -webkit-transition: color 400ms ease;
   -o-transition: color 400ms ease;
   transition: color 400ms ease;
   position: relative;
 }
-.out-row__privacy::before, .out-row__agreement::before, .footer-body__link::before, .bread-crumbs__next::before {
+.out-row__privacy::before, .out-row__agreement::before, .footer-body__link::before {
   position: absolute;
   content: "";
   width: 0;
@@ -18,7 +18,7 @@
   transition: width 400ms ease, left 400ms ease;
 }
 @media (any-hover: hover) {
-  .out-row__privacy:hover:hover::before, .out-row__agreement:hover:hover::before, .footer-body__link:hover:hover::before, .bread-crumbs__next:hover:hover::before {
+  .out-row__privacy:hover:hover::before, .out-row__agreement:hover:hover::before, .footer-body__link:hover:hover::before {
     width: 100%;
     left: 0;
   }
@@ -196,23 +196,11 @@ body.lock {
 .header__logo {
   max-width: 100%;
   text-align: center;
-  -webkit-transition: -webkit-transform 400ms ease;
-  transition: -webkit-transform 400ms ease;
-  -o-transition: transform 400ms ease;
-  transition: transform 400ms ease;
-  transition: transform 400ms ease, -webkit-transform 400ms ease;
   position: relative;
   z-index: 5;
 }
 .header__logo.active {
   pointer-events: none;
-}
-@media (any-hover: hover) {
-  .header__logo:hover {
-    -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-            transform: scale(1.2);
-  }
 }
 @media (max-width: 47.99875em) {
   .header__menu {
@@ -404,14 +392,6 @@ body.lock {
 .bread-crumbs__next.active {
   pointer-events: none;
 }
-.bread-crumbs__next::before {
-  background-color: #9c9c9c;
-}
-@media (any-hover: hover) {
-  .bread-crumbs__next:hover {
-    color: #9c9c9c;
-  }
-}
 .bread-crumbs__next:not(:last-child)::after {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 0.5rem;
@@ -434,6 +414,9 @@ body.lock {
   transition: transform 400ms ease, -webkit-transform 400ms ease;
   display: inline-block;
   margin-bottom: 0.9375rem;
+  -webkit-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+  transition: all 400ms ease;
 }
 .footer-body__logo.active {
   pointer-events: none;
@@ -442,9 +425,6 @@ body.lock {
   .footer-body__logo:hover {
     -webkit-filter: invert(26%) sepia(100%) saturate(1839%) hue-rotate(205deg) brightness(99%) contrast(114%);
             filter: invert(26%) sepia(100%) saturate(1839%) hue-rotate(205deg) brightness(99%) contrast(114%);
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
   }
 }
 .footer-body__label {
@@ -916,6 +896,9 @@ body.lock {
     padding-bottom: 3.125rem;
   }
 }
+.page__decision_home .decision__body {
+  margin-bottom: 3.125rem;
+}
 
 .decision__categories {
   display: -webkit-box;
@@ -926,14 +909,6 @@ body.lock {
           justify-content: center;
   gap: 0.625rem;
   margin-bottom: 2.5rem;
-}
-.decision__body {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.125rem, 1fr));
-  gap: 1.875rem;
-}
-.decision__body:not(:last-child) {
-  margin-bottom: 3.125rem;
 }
 .decision__link {
   font-weight: 600;
@@ -966,13 +941,10 @@ body.lock {
   transition: transform 400ms ease, -webkit-transform 400ms ease;
 }
 @media (any-hover: hover) {
-  .decision__link:hover {
-    text-decoration: underline;
-  }
   .decision__link:hover::after {
-    -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
+    -webkit-transform: translateX(0.3125rem);
+        -ms-transform: translateX(0.3125rem);
+            transform: translateX(0.3125rem);
   }
 }
 
@@ -989,6 +961,14 @@ body.lock {
   border-bottom: 0.0625rem solid #3e97ed;
 }
 
+.decision-body__items {
+  display: none;
+}
+.decision-body__items.active {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.125rem, 1fr));
+  gap: 1.875rem;
+}
 .decision-body__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1003,13 +983,6 @@ body.lock {
   -o-transition: transform 300ms ease;
   transition: transform 300ms ease;
   transition: transform 300ms ease, -webkit-transform 300ms ease;
-}
-@media (any-hover: hover) {
-  .decision-body__image:hover {
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-  }
 }
 .decision-body__name {
   font-weight: 700;
