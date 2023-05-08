@@ -4,23 +4,24 @@ const reviewsSwiper = new Swiper('.reviews__swiper', {
   loop: true,
   speed: 1200,
   arrows: true,
+   navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
       spaceBetween: 30,
       slidesPerView: 1,
       freeMode: true,
     autoHeight: true,
-  variableWidth:false,
-      watchOverflow: true,
+  // variableWidth:false,
+      // watchOverflow: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
   },
-        navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+       
+    autoplay: {
+    delay: 5000,
   },
-  //   autoplay: {
-  //   delay: 4000,
-  // },
  
   
 });
