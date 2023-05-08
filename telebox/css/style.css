@@ -194,13 +194,17 @@ body.lock {
   }
 }
 .header__logo {
-  max-width: 100%;
-  text-align: center;
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1.28;
+  color: #006dff;
   position: relative;
   z-index: 5;
 }
-.header__logo.active {
-  pointer-events: none;
+@media (max-width: 47.99875em) {
+  .header__logo {
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: 47.99875em) {
   .header__menu {
@@ -407,24 +411,26 @@ body.lock {
   color: #9c9c9c;
 }
 .footer-body__logo {
-  -webkit-transition: -webkit-transform 400ms ease;
-  transition: -webkit-transform 400ms ease;
-  -o-transition: transform 400ms ease;
-  transition: transform 400ms ease;
-  transition: transform 400ms ease, -webkit-transform 400ms ease;
   display: inline-block;
-  margin-bottom: 0.9375rem;
-  -webkit-transition: all 400ms ease;
-  -o-transition: all 400ms ease;
-  transition: all 400ms ease;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1.28;
+  color: #747474;
+  -webkit-transition: color 400ms ease;
+  -o-transition: color 400ms ease;
+  transition: color 400ms ease;
 }
 .footer-body__logo.active {
   pointer-events: none;
 }
+@media (max-width: 47.99875em) {
+  .footer-body__logo {
+    font-size: 1.625rem;
+  }
+}
 @media (any-hover: hover) {
   .footer-body__logo:hover {
-    -webkit-filter: invert(26%) sepia(100%) saturate(1839%) hue-rotate(205deg) brightness(99%) contrast(114%);
-            filter: invert(26%) sepia(100%) saturate(1839%) hue-rotate(205deg) brightness(99%) contrast(114%);
+    color: #fff;
   }
 }
 .footer-body__label {
