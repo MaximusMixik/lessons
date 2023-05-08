@@ -998,6 +998,18 @@ body.lock {
 .decision-body__image {
   max-width: 100%;
   text-align: center;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+}
+@media (any-hover: hover) {
+  .decision-body__image:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+  }
 }
 .decision-body__name {
   font-weight: 700;
