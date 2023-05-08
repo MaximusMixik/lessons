@@ -430,7 +430,7 @@ body.lock {
 }
 @media (any-hover: hover) {
   .footer-body__logo:hover {
-    color: #fff;
+    color: #006dff;
   }
 }
 .footer-body__label {
@@ -513,9 +513,9 @@ body.lock {
     border-bottom: 0.0625rem solid transparent;
   }
   .footer-body__title.active::after {
-    -webkit-transform: rotate(0);
-        -ms-transform: rotate(0);
-            transform: rotate(0);
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
   }
   .footer-body__title::after {
     content: "";
@@ -525,9 +525,6 @@ body.lock {
     width: 1.25rem;
     height: 1.25rem;
     background: url(../img/footer/arrow_white.svg) center no-repeat;
-    -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
     -webkit-transition: -webkit-transform 300ms ease;
     transition: -webkit-transform 300ms ease;
     -o-transition: transform 300ms ease;
@@ -1132,11 +1129,6 @@ body.lock {
     background-color: transparent;
     border: 0.0625rem solid #006dff;
   }
-  .partners__item:hover .partners-item__image img {
-    -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-            transform: scale(1.2);
-  }
 }
 
 .partners-item__image {
@@ -1148,11 +1140,6 @@ body.lock {
   max-width: 100%;
   text-align: center;
   border-radius: 50%;
-  -webkit-transition: -webkit-transform 400ms linear;
-  transition: -webkit-transform 400ms linear;
-  -o-transition: transform 400ms linear;
-  transition: transform 400ms linear;
-  transition: transform 400ms linear, -webkit-transform 400ms linear;
 }
 .partners-item__content {
   font-size: 1rem;
