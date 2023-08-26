@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Place Autocomplete</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default&_v=20230826133917"></script>
+
+	<style>
+		.map-body {
+			position: relative;
+		}
+
+		#map {
+			height: 500px;
+			width: 100%;
+		}
+
+		.location-body {
+			padding: 10px;
+			position: absolute;
+			left: 50%;
+			top: 0;
+			height: max-content;
+			width: max-content;
+			transform: translateX(-50%);
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		#pac-input {
+			background-color: #fff;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+		}
+
+		#pac-input:focus {
+			border-color: #4d90fe;
+		}
+
+		#build {
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		#showRouteButton {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 10%;
+			display: none;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="map-body">
+		<div id="map"></div>
+		<div class="location-body">
+			<input id="addressInput" type="text" placeholder="Geben Sie einen Standort an" />
+			<button id="build">Erstellen Sie eine Route</button>
+		</div>
+		<button id="showRouteButton" class="button" onclick="showRouteOnGoogleMaps()">Route auf Google anzeigen
+			Karten</button>
+	</div>
+
+	<script>
+		let map;
+		let directionsService;
+		let directionsDisplay;
+		let startMarker = null;
+		const essen = {
+			lat: 51.444307,
+			lng: 6.988343
+		};
+
+		function initMap() {
+			map = new google.maps.Map(document.getElementById("map"), {
+				center: essen,
+				zoom: 13,
+				zoomControl: false,
+				streetViewControl: false,
+				mapTypeControl: false
+			});
+			directionsService = new google.maps.DirectionsService();
+			directionsDisplay = new google.maps.DirectionsRenderer();
+			directionsDisplay.setMap(map);
+
+			const endMarker = new google.maps.Marker({
+				position: essen,
+				map: map,
+				title: 'Alpha Automation GmbH'
+			});
+
+			endMarker.addListener('mouseover', function() {
+				const infowindow = new google.maps.InfoWindow({
+					content: 'Alpha Automation GmbH'
+				});
+				infowindow.open(map, endMarker);
+			});
+			endMarker.addListener('click', function() {
+				buildRouteFromCurrentLocation();
+			});
+
+			map.addListener('click', function(event) {
+				if (!startMarker) {
+					startMarker = new google.maps.Marker({
+						position: event.latLng,
+						map: map,
+						icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+					});
+				} else {
+					startMarker.setPosition(event.latLng);
+				}
+				calcRoute(startMarker.position, essen);
+			});
+
+			document.getElementById("build").addEventListener("click", function() {
+				const input = document.getElementById("addressInput").value;
+				if (input) {
+					createStartMarker(input);
+				} else {
+					alert("Введите местоположение");
+				}
+			});
+
+			function createStartMarker(location) {
+				const geocoder = new google.maps.Geocoder();
+				geocoder.geocode({
+					address: location
+				}, (results, status) => {
+					if (status === "OK" && results[0].geometry) {
+						const locationLatLng = results[0].geometry.location;
+						if (!startMarker) {
+							startMarker = new google.maps.Marker({
+								position: locationLatLng,
+								map: map,
+								icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+							});
+							map.setCenter(locationLatLng);
+							map.setZoom(17);
+						} else {
+							startMarker.setPosition(locationLatLng);
+							map.panTo(locationLatLng);
+						}
+						calcRoute(locationLatLng, essen);
+					} else {
+						alert("Не удалось найти местоположение");
+					}
+				});
+			}
+			initAutocomplete();
+		}
+
+		function initAutocomplete() {
+			const addressInput = document.getElementById("addressInput");
+			const autocomplete = new google.maps.places.Autocomplete(addressInput);
+
+			autocomplete.addListener("place_changed", () => {
+				const place = autocomplete.getPlace();
+				if (!place.geometry) {
+					alert("Для этого места нет геометрических данных.");
+					return;
+				}
+
+				const locationLatLng = place.geometry.location;
+				if (!startMarker) {
+					startMarker = new google.maps.Marker({
+						position: locationLatLng,
+						map: map,
+						icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+					});
+					map.setCenter(locationLatLng);
+					map.setZoom(17);
+				} else {
+					startMarker.setPosition(locationLatLng);
+					map.panTo(locationLatLng);
+				}
+				calcRoute(locationLatLng, essen);
+			});
+		}
+
+		function calcRoute(start, end) {
+			const request = {
+				origin: start,
+				destination: end,
+				travelMode: 'DRIVING'
+			};
+			directionsService.route(request, function(result, status) {
+				if (status == 'OK') {
+					directionsDisplay.setDirections(result);
+					showRouteButtonWithAnimation();
+				}
+			});
+		}
+
+		function showRouteButtonWithAnimation() {
+			const showRouteButton = document.getElementById('showRouteButton');
+			showRouteButton.style.display = 'block';
+			setTimeout(() => {
+				showRouteButton.style.opacity = '1';
+			}, 100);
+		}
+
+		function showRouteOnGoogleMaps() {
+			if (startMarker) {
+				const startAddress = startMarker.getPosition().lat() + ',' + startMarker.getPosition().lng();
+				const endAddress = 'Friedbergstrasse 64, 45147 Essen';
+				const googleMapsLink = 'https://www.google.com/maps/dir/' + encodeURIComponent(startAddress) + '/' + encodeURIComponent(endAddress);
+				window.open(googleMapsLink, '_blank');
+			}
+		}
+
+
+		// Инициализация автозаполнения
+		function initAutocomplete() {
+			const addressInput = document.getElementById("addressInput");
+			const autocomplete = new google.maps.places.Autocomplete(addressInput);
+
+			autocomplete.addListener("place_changed", () => {
+				const place = autocomplete.getPlace();
+				if (!place.geometry) {
+					alert("Для этого места нет геометрических данных.");
+					return;
+				}
+
+				const locationLatLng = place.geometry.location;
+				if (!startMarker) {
+					startMarker = new google.maps.Marker({
+						position: locationLatLng,
+						map: map,
+						icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+					});
+					map.setCenter(locationLatLng);
+					map.setZoom(17);
+				} else {
+					startMarker.setPosition(locationLatLng);
+					map.panTo(locationLatLng);
+				}
+				calcRoute(locationLatLng, essen);
+			});
+		}
+
+		function buildRouteFromCurrentLocation() {
+			if (startMarker) {
+				console.log("Clicked on end marker");
+				navigator.geolocation.getCurrentPosition(function(position) {
+					const userLocation = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+					calcRoute(userLocation, startMarker.getPosition());
+				});
+			}
+		}
+		window.initMap = initMap;
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=places&v=weekly&_v=20230826133917" defer></script>
+
+
+
+
+</body>
+
+</html>

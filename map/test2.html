@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Place Autocomplete</title>
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default&_v=20230826133917"></script> -->
+
+	<style>
+		.map-body {
+			position: relative;
+		}
+
+		#map {
+			height: 500px;
+			width: 100%;
+		}
+
+		.map__actions {
+			padding: 10px;
+			position: absolute;
+			left: 50%;
+			top: 0;
+			height: max-content;
+			width: max-content;
+			transform: translateX(-50%);
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		#addressInput {
+			background-color: #fff;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+		}
+
+		#addressInput:focus {
+			border-color: #4d90fe;
+		}
+
+		#addMarkerButton {
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		#openGoogleMapsButton {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 10%;
+			display: none;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+	</style>
+</head>
+
+<body>
+	<div class=" map">
+		<div id="map" class="map__body"> </div>
+		<div id="selectedPlace" class="map__actions">
+			<div class="map__input">
+				<input class="map__place pac-target-input" autocomplete="off" type="text" id="addressInput" placeholder="Geben Sie Ihre Adresse ein">
+				<button class="map__button button " id="addMarkerButton">Markierung hinzufügen</button>
+			</div>
+			<button id="openGoogleMapsButton" class="map__button">Gehen Sie zu Google Maps</button>
+		</div>
+	</div>
+	<script>
+		let directionsRenderer = null;
+		let userLocationMarker = null;
+		let customMarker = null;
+		let geolocationRequested = false;
+
+		function initMap() {
+			const baceCoords = {
+				lat: 51.444307,
+				lng: 6.988343
+			};
+
+			const mapStyles = [{
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#f5f5f5"
+					}]
+				},
+				{
+					"elementType": "labels.icon",
+					"stylers": [{
+						"visibility": "off"
+					}]
+				},
+				{
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "administrative.land_parcel",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#bdbdbd"
+					}]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#eeeeee"
+					}]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#e5e5e5"
+					}]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#ffffff"
+					}]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#dadada"
+					}]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road.local",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "transit.line",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#e5e5e5"
+					}]
+				},
+				{
+					"featureType": "transit.station",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#eeeeee"
+					}]
+				},
+				{
+					"featureType": "water",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#c9c9c9"
+					}]
+				},
+				{
+					"featureType": "water",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				}
+			];
+
+			const map = new google.maps.Map(document.getElementById("map"), {
+				center: baceCoords,
+				zoom: 12,
+				styles: mapStyles,
+			});
+
+			// Створення маркера для міста Катовіце
+			const bacePlaceMarker = new google.maps.Marker({
+				position: baceCoords,
+				map: map,
+				title: "Alpha Automation GmbH Friedbergstrasse 64 👷‍♂️",
+				icon: {
+					url: "img/logo-mini-fotor-2.png",
+					scaledSize: new google.maps.Size(40, 40), // Розмір зображення маркера
+				},
+			});
+
+			function initAutocomplete() {
+				const addressInput = document.getElementById("addressInput");
+				const autocomplete = new google.maps.places.Autocomplete(addressInput);
+
+				autocomplete.addListener("place_changed", () => {
+					const place = autocomplete.getPlace();
+					if (!place.geometry) {
+						alert("Keine Details für diesen Ort verfügbar.");
+						return;
+					}
+				});
+			}
+
+			// Обробка кліку на маркер bacePlaceMarker
+			bacePlaceMarker.addListener("click", () => {
+				if (!geolocationRequested && "geolocation" in navigator) {
+					geolocationRequested = true;
+					navigator.geolocation.getCurrentPosition(
+						(position) => {
+							const userCoords = {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude,
+							};
+							userLocationMarker = new google.maps.Marker({
+								position: userCoords,
+								map: map,
+								title: "Ihr Standort 🚶‍♂️",
+								icon: {
+									url: "img/user-marker.png", // Замініть на шлях до зображення маркера користувача
+									scaledSize: new google.maps.Size(40, 40),
+								},
+							});
+						},
+						(error) => {
+							console.error("Помилка отримання місцезнаходження:", error);
+							// Тут ви можете відобразити попап або повідомлення користувачу
+							document.getElementById("addressInput").style.display = "block";
+							document.getElementById("addMarkerButton").style.display = "block";
+							alert("Wenn Sie den Standort nicht ermitteln können, geben Sie Ihre Adresse ein, um eine Route zu erstellen");
+						}
+					);
+				} else if (!geolocationRequested) {
+					console.log("Геолокація не підтримується браузером.");
+					// Тут ви також можете відобразити попап або повідомлення користувачу
+					document.getElementById("addressInput").style.display = "block";
+					document.getElementById("addMarkerButton").style.display = "block";
+					alert("Geolokalisierung wird vom Browser nicht unterstützt.");
+				}
+			});
+
+			const infoWindow = new google.maps.InfoWindow();
+
+			// Обробка кліку на маркер bacePlaceMarker
+			bacePlaceMarker.addListener("click", () => {
+				const geocoder = new google.maps.Geocoder();
+				geocoder.geocode({
+					location: bacePlaceMarker.getPosition()
+				}, (results, status) => {
+					if (status === "OK" && results[0]) {
+						const markerAddress = results[0].formatted_address;
+						infoWindow.setContent(markerAddress);
+						infoWindow.open(map, bacePlaceMarker);
+					}
+				});
+			});
+
+			document.getElementById("addMarkerButton").addEventListener("click", addCustomMarker);
+
+			function addCustomMarker() {
+				const address = document.getElementById("addressInput").value;
+				if (address.trim() === "") {
+					alert("Geben Sie Ihre Adresse ein.");
+					return;
+				}
+
+				const geocoder = new google.maps.Geocoder();
+				geocoder.geocode({
+					address: address
+				}, (results, status) => {
+					if (status === "OK" && results[0]) {
+						if (customMarker) {
+							customMarker.setMap(null);
+						}
+
+						customMarker = new google.maps.Marker({
+							position: results[0].geometry.location,
+							map: map,
+							title: address,
+						});
+
+						map.setCenter(results[0].geometry.location);
+
+						buildRoute();
+					} else {
+						// Не вдалося знайти місце за введеною адресою.
+						alert("Ich kann unter der von mir eingegebenen Adresse keinen Platz finden..");
+					}
+				});
+			}
+
+
+
+			function buildRoute() {
+				if (!customMarker) {
+					// Маркер не додано. Неможливо побудувати маршрут
+					alert("Kein Token hinzugefügt. Es ist unmöglich, eine Route zu bauen.");
+					return;
+				}
+
+				if (directionsRenderer) {
+					directionsRenderer.setMap(null);
+				}
+
+				let directionsService = new google.maps.DirectionsService();
+				directionsRenderer = new google.maps.DirectionsRenderer({
+					map: map,
+					panel: document.getElementById("routeInfo"), // Додаємо панель для відображення інформації
+				});
+
+				let request = {
+					origin: customMarker.getPosition(),
+					destination: baceCoords,
+					travelMode: google.maps.TravelMode.DRIVING,
+				};
+
+				directionsService.route(request, function(response, status) {
+					if (status == google.maps.DirectionsStatus.OK) {
+						directionsRenderer.setDirections(response);
+						// Показати кнопку для переходу на Google Карти
+						document.getElementById("openGoogleMapsButton").style.display = "block";
+					}
+				});
+			}
+
+			const openGoogleMapsButton = document.getElementById("openGoogleMapsButton");
+			openGoogleMapsButton.addEventListener("click", openGoogleMaps);
+
+			function openGoogleMaps() {
+				let destinationCoords = encodeURIComponent(`${baceCoords.lat},${baceCoords.lng}`);
+				if (customMarker) {
+					const originCoords = encodeURIComponent(`${customMarker.getPosition().lat()},${customMarker.getPosition().lng()}`);
+					destinationCoords = encodeURIComponent(`${baceCoords.lat},${baceCoords.lng}`);
+
+					const googleMapsLink = `https://www.google.com/maps/dir/?api=1&origin=${originCoords}&destination=${destinationCoords}&travelmode=driving`;
+					window.open(googleMapsLink, "_blank");
+				} else {
+					// Маркер не додано. Неможливо відкрити маршрут у Google Картах
+					alert("Kein Token hinzugefügt. Wegbeschreibungen in Google Maps können nicht geöffnet werden.");
+
+				}
+			}
+
+			initAutocomplete();
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&libraries=places,geometry&callback=initMap&_v=20230825003843" defer></script>
+	<!-- src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=places&v=weekly" -->
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HomePage</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20230826133917">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default&_v=20230826133917"></script> -->
+
+</head>
+<style>
+	.map {
+		position: relative;
+		height: toRem(440);
+
+
+	}
+
+	.map__body {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: url(img/map/map.png) center / cover no-repeat;
+	}
+
+	.map__button {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 10%;
+		padding: 10px 20px;
+		background-color: var(--bg-primary);
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 0.5s ease;
+
+		@media (max-width: $mobileSmall) {
+			max-width: max-content;
+		}
+	}
+</style>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+			</div>
+		</header>
+		<main class="page">
+			<div class="page__map map">
+				<div class="map__body">
+					<div id="map"></div>
+					<div class="location-body">
+						<input id="pac-input" type="text" placeholder="Geben Sie einen Standort an" />
+						<button id="build">Erstellen Sie eine Route</button>
+					</div>
+					<button id="showRouteButton" class="button" onclick="showRouteOnGoogleMaps()">Route auf Google anzeigen
+						Karten</button>
+				</div>
+				<div id="infowindow-content" class="infowindow-content">
+					<span id="place-name" class="place-name"></span><br />
+					<span id="place-address" class="place-address"></span>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+			</div>
+		</footer>;
+
+		window.initMap = initMap;
+
+		</script> -->
+
+		<!-- no places <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=&v=weekly"
+    defer></script> -->
+</body>
+
+</html>

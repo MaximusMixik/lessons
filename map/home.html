@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HomePage</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20230826133917">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default&_v=20230826133917"></script> -->
+
+</head>
+<!-- <style>
+  #map-container {
+    position: relative;
+  }
+
+  #map {
+    height: 500px;
+    width: 100%;
+  }
+
+  #showRouteButton {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+</style> -->
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+			</div>
+		</header>
+		<main class="page">
+			<!-- <div class="page__map map">
+        <div id="map" class="map__body"></div>
+        <div id="selectedPlace" class="map__actions">
+          <button id="openGoogleMapsButton" class="map__button button-redirect button"><span>Перейти на Google
+              Карти</span></button>
+          <p id="selectedAddress" class="map__info"></p>
+          <button id="routeButton" class="map__button button" type="button"><span>Побудувати маршрут</span></button>
+        </div>
+      </div> -->
+
+			<!-- <div id="map-container">
+        <div id="map"></div>
+        <button id="showRouteButton" onclick="showRouteOnGoogleMaps()">Показать маршрут на Google Картах</button>
+      </div> -->
+
+			<div class="page__map map">
+				<!-- карта -->
+				<div id="map" class="map__body ">
+
+				</div>
+				<!-- кнопки та поле з інформацією -->
+				<div id="selectedPlace" class="map__actions ">
+					<button id="openGoogleMapsButton" class="map__button button-redirect button" style="display: block;"> Google
+						Maps</button>
+
+					<button id="routeButton" class="map__button button" type="button">Anweisungen bekommen</button>
+				</div>
+
+			</div>
+			<!-- <div class="map">
+        <div id="map" class="map__body" style="position: relative; overflow: hidden;">
+
+        </div>
+        <div id="selectedPlace" class="map__actions">
+          <button id="openGoogleMapsButton" class="map__button button-redirect button"
+            style="display: block;"><span>Gehen
+              Sie
+              zu Google Maps</span></button>
+          <button id="routeButton" class="map__button button" type="button"><span>Erstellen Sie eine
+              Route</span></button>
+          <p id="selectedAddress" class="map__info"></p>
+        </div>
+      </div> -->
+
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+			</div>
+		</footer>
+	</div>
+	<!-- <script>
+  let selectedPlace = null;
+  let directionsRenderer = null;
+
+
+  function initMap() {
+    // координати потрібного місця
+    const baceCoords = { lat: 51.444307, lng: 6.988343 };
+
+    // стилі для карти
+    const mapStyles = [
+      {
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#f5f5f5" }
+        ]
+      },
+      {
+        "elementType": "labels.icon",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },
+      {
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#bdbdbd" }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#eeeeee" }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#e5e5e5" }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#ffffff" }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#dadada" }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#e5e5e5" }
+        ]
+      },
+      {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#eeeeee" }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+          { "color": "#c9c9c9" }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          { "color": "#009999" }
+        ]
+      }
+    ];
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      center: baceCoords,
+      zoom: 12,
+      // підключення стилів до карти
+      styles: mapStyles,
+    });
+
+    // Створення маркера
+    const bacePlaceMarker = new google.maps.Marker({
+      position: baceCoords,
+      map,
+      title: "Alpha Automation GmbH",
+      // підключення власної іконки
+      icon: {
+        url: "img/logo-mini-fotor-2.png",
+        scaledSize: new google.maps.Size(40, 40), // Розмір зображення маркера
+      },
+    });
+
+    // автоматично повертається на мітку через 3с
+    // map.addListener("center_changed", () => {
+    //   // 3 seconds after the center of the map has changed, pan back to the
+    //   // marker.
+    //   window.setTimeout(() => {
+    //     map.panTo(bacePlaceMarker.getPosition());
+    //   }, 3000);
+    // });
+
+    // зум при кліку на мітку 
+    bacePlaceMarker.addListener("click", () => {
+      map.setZoom(18);
+      map.setCenter(bacePlaceMarker.getPosition());
+    });
+    // !!!!!!!!!!!!!!!!!!!!!!!!
+
+    let infoWindow = new google.maps.InfoWindow();
+    // Обробка кліку на маркер bacePlaceMarker
+    // при кліку на маркер зявляється адреса маркеру
+    bacePlaceMarker.addListener("click", () => {
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ location: bacePlaceMarker.getPosition() }, (results, status) => {
+        if (status === "OK" && results[0]) {
+          const markerAddress = results[0].formatted_address;
+          infoWindow.setContent(`Adressen: ${markerAddress}`);
+          infoWindow.open(map, bacePlaceMarker); // Відкрити інфовікно над маркером
+        }
+      });
+    });
+
+
+    map.addListener("click", (event) => {
+      if (selectedPlace) {
+        selectedPlace.setMap(null);
+      }
+
+      // новий маркер вибраний користувачем
+      selectedPlace = new google.maps.Marker({
+        position: event.latLng,
+        map: map,
+        title: "Вибране місце",
+      });
+      // Отримання адреси вибраного місця
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ location: event.latLng }, (results, status) => {
+        if (status === "OK" && results[0]) {
+          const selectedAddress = results[0].formatted_address;
+          document.getElementById("selectedAddress").textContent = selectedAddress;
+          document.getElementById("selectedPlace").style.display = "flex";
+        }
+      });
+    });
+
+    // прослуховування події кліку на кнопку побудувати маршрут
+    document.getElementById("routeButton").addEventListener("click", buildRoute);
+
+    // функція для побудови маршруту
+    function buildRoute() {
+      if (!selectedPlace) {
+        // повідомлення якщо точку не вказано
+        alert("Не вказано цільову точку.");
+        return;
+      }
+
+      if (directionsRenderer) {
+        directionsRenderer.setMap(null);
+      }
+
+      let destination = selectedPlace.getPosition();
+
+      let directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({
+        map: map,
+        panel: document.getElementById("routeInfo"), // Додаємо панель для відображення інформації
+      });
+
+      let request = {
+        origin: destination,
+        destination: bacePlaceMarker.getPosition(),
+        travelMode: google.maps.TravelMode.DRIVING,
+      };
+
+      directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsRenderer.setDirections(response);
+        }
+      });
+      // Показати кнопку для переходу на Google Карти вона зявляється після створення маршруту
+      document.getElementById("openGoogleMapsButton").style.display = "block";
+    }
+
+    const openGoogleMapsButton = document.getElementById("openGoogleMapsButton");
+    openGoogleMapsButton.addEventListener("click", openGoogleMaps);
+
+    function openGoogleMaps() {
+      if (!selectedPlace) {
+        alert("Не вказано цільову точку.");
+        return;
+      }
+
+      let destination = selectedPlace.getPosition();
+
+      const originCoords = encodeURIComponent(`${bacePlaceMarker.getPosition().lat()},${bacePlaceMarker.getPosition().lng()}`);
+      const destinationCoords = encodeURIComponent(`${destination.lat()},${destination.lng()}`);
+
+      const googleMapsLink = `https://www.google.com/maps/dir/?api=1&origin=${originCoords}&destination=${destinationCoords}&travelmode=driving`;
+
+      window.open(googleMapsLink, "_blank");
+
+      window.initMap = initMap;
+    }
+  }
+
+
+</script> -->
+
+	<!-- my work  -->
+	<!-- <script>
+  let map;
+  let directionsService;
+  let directionsDisplay;
+  let startMarker = null;
+  const essen = { lat: 51.444307, lng: 6.988343 };
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: essen,
+      zoom: 13,
+      zoomControl: false,
+      streetViewControl: false,
+      mapTypeControl: false
+    });
+
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+
+    const endMarker = new google.maps.Marker({
+      position: essen,
+      map: map,
+      title: 'Alpha Automation GmbH'
+    });
+
+    endMarker.addListener('mouseover', function () {
+      const infowindow = new google.maps.InfoWindow({
+        content: 'Alpha Automation GmbH'
+      });
+      infowindow.open(map, endMarker);
+    });
+
+    map.addListener('click', function (event) {
+      if (!startMarker) {
+        startMarker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+        });
+      } else {
+        startMarker.setPosition(event.latLng);
+      }
+      calcRoute(startMarker.position, essen);
+    });
+  }
+
+  function calcRoute(start, end) {
+    const request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function (result, status) {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(result);
+        showRouteButtonWithAnimation();
+      }
+    });
+  }
+
+  function showRouteButtonWithAnimation() {
+    const showRouteButton = document.getElementById('showRouteButton');
+    showRouteButton.style.display = 'block';
+    setTimeout(() => {
+      showRouteButton.style.opacity = '1';
+    }, 100);
+  }
+
+  function showRouteOnGoogleMaps() {
+    if (startMarker) {
+      const startAddress = startMarker.getPosition().lat() + ',' + startMarker.getPosition().lng();
+      const endAddress = 'Friedbergstrasse 64, 45147 Essen';
+      const googleMapsLink = 'https://www.google.com/maps/dir/' + encodeURIComponent(startAddress) + '/' + encodeURIComponent(endAddress);
+      window.open(googleMapsLink, '_blank');
+    }
+  }
+
+
+
+</script> -->
+
+
+
+	<!-- !!!!!!!!! last version in my site -->
+	<!-- <script>
+  let map;
+  let directionsService;
+  let directionsDisplay;
+  let startMarker = null;
+  const essen = { lat: 51.444307, lng: 6.988343 };
+
+  function initMap() {
+    const screenWidth = window.innerWidth;
+    const zoomLevel = screenWidth > 767.98 ? 13 : 8;
+    map = new google.maps.Map(document.getElementById('map'), {
+
+      center: essen,
+      zoom: zoomLevel,
+      styles: [
+        {
+          "featureType": "administrative",
+          "elementType": "all",
+          "stylers": [
+            {
+              "hue": "#000000"
+            },
+            {
+              "lightness": -100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.country",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "weight": "1.69"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "saturation": "-3"
+            },
+            {
+              "gamma": "1.81"
+            },
+            {
+              "weight": "0.01"
+            },
+            {
+              "hue": "#ff0000"
+            },
+            {
+              "lightness": "17"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "weight": "2.13"
+            },
+            {
+              "color": "#afafaf"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#878787"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.locality",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.neighborhood",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": -3
+            },
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#f4f4f4"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "hue": "#000000"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": -100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+            {
+              "hue": "#000000"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": -100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "hue": "#bbbbbb"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 26
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "hue": "#ffffff"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "saturation": "-34"
+            },
+            {
+              "lightness": "-95"
+            },
+            {
+              "gamma": "1.67"
+            },
+            {
+              "weight": "1.50"
+            },
+            {
+              "invert_lightness": true
+            },
+            {
+              "color": "#009999"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "color": "#c7c8c7"
+            },
+            {
+              "weight": "0.66"
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "weight": "1.08"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway.controlled_access",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#797979"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#868686"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+            {
+              "hue": "#ff0000"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 100
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#b6b2b2"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "hue": "#ff0000"
+            },
+            {
+              "lightness": -100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "hue": "#ff0000"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 100
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "hue": "#000000"
+            },
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": -100
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        }
+      ],
+      scrollwheel: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      zoomControl: false,
+    });
+
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+
+    const endMarker = new google.maps.Marker({
+      position: essen,
+      map: map,
+      title: 'Alpha Automation GmbH',
+      icon: {
+        url: "img/map/marker.svg",
+        scaledSize: new google.maps.Size(50, 80),
+      },
+      animation: google.maps.Animation.DROP
+    });
+    endMarker.addListener("click", () => {
+      map.setZoom(17);
+      map.setCenter(endMarker.getPosition());
+    });
+    const getCen = map.getCenter();
+
+    google.maps.event.addDomListener(window, 'resize', function () {
+      map.setCenter(getCen);
+    });
+
+
+    map.addListener('click', function () {
+      map.setOptions({
+        scrollwheel: true
+      });
+    });
+
+    map.addListener('drug', function () {
+      map.setOptions({
+        scrollwheel: true
+      });
+    });
+
+    map.addListener('mouseout', function () {
+      map.setOptions({
+        scrollwheel: false
+      });
+    });
+
+
+    endMarker.addListener('mouseover', function () {
+      const infowindow = new google.maps.InfoWindow({
+        content: 'Alpha Automation GmbH'
+      });
+      infowindow.open(map, endMarker);
+    });
+
+    map.addListener('click', function (event) {
+      if (!startMarker) {
+        startMarker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          title: "Ihr Standort",
+          // icon: {
+          //   url: "img/map/user_marker.svg",
+          //   scaledSize: new google.maps.Size(20, 30), // Розмір зображення маркера
+          // },
+        });
+      } else {
+        startMarker.setPosition(event.latLng);
+      }
+      calcRoute(startMarker.position, essen);
+    });
+  }
+
+  function calcRoute(start, end) {
+    const request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function (result, status) {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(result);
+        showRouteButtonWithAnimation();
+      }
+    });
+  }
+
+  function showRouteButtonWithAnimation() {
+    const showRouteButton = document.getElementById('showRouteButton');
+    showRouteButton.style.display = 'block';
+    setTimeout(() => {
+      showRouteButton.style.opacity = '1';
+    }, 100);
+  }
+
+  function showRouteOnGoogleMaps() {
+    if (startMarker) {
+      const startAddress = startMarker.getPosition().lat() + ',' + startMarker.getPosition().lng();
+      const endAddress = 'Friedbergstrasse 64, 45147 Essen';
+      const googleMapsLink = 'https://www.google.com/maps/dir/' + encodeURIComponent(startAddress) + '/' + encodeURIComponent(endAddress);
+      window.open(googleMapsLink, '_blank');
+    }
+  }
+</script> -->
+
+	<!-- !!!!!!!!!!!!!!!!!!!!!!! -->
+
+	<!-- <script>
+  let map;
+  let directionsService;
+  let directionsDisplay;
+  let startMarker = null;
+  const essen = { lat: 51.444307, lng: 6.988343 };
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: essen,
+      zoom: 13,
+      zoomControl: false,
+      streetViewControl: false,
+      mapTypeControl: false
+    });
+
+
+
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+
+    const endMarker = new google.maps.Marker({
+      position: essen,
+      map: map,
+      title: 'Alpha Automation GmbH'
+    });
+
+    endMarker.addListener('mouseover', function () {
+      const infowindow = new google.maps.InfoWindow({
+        content: 'Alpha Automation GmbH'
+      });
+      infowindow.open(map, endMarker);
+    });
+
+    map.addListener('click', function (event) {
+      if (!startMarker) {
+        startMarker = new google.maps.Marker({
+          position: event.latLng,
+          map: map,
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+        });
+      } else {
+        startMarker.setPosition(event.latLng);
+      }
+      calcRoute(startMarker.position, essen);
+    });
+  }
+
+  function calcRoute(start, end) {
+    const request = {
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function (result, status) {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(result);
+        showRouteButtonWithAnimation();
+      }
+    });
+  }
+
+  function showRouteButtonWithAnimation() {
+    const showRouteButton = document.getElementById('showRouteButton');
+    showRouteButton.style.display = 'block';
+    setTimeout(() => {
+      showRouteButton.style.opacity = '1';
+    }, 100);
+  }
+
+  function showRouteOnGoogleMaps() {
+    if (startMarker) {
+      const startAddress = startMarker.getPosition().lat() + ',' + startMarker.getPosition().lng();
+      const endAddress = 'Friedbergstrasse 64, 45147 Essen';
+      const googleMapsLink = 'https://www.google.com/maps/dir/' + encodeURIComponent(startAddress) + '/' + encodeURIComponent(endAddress);
+      window.open(googleMapsLink, '_blank');
+    }
+
+  }
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  const card = document.getElementById("pac-card");
+  const input = document.getElementById("pac-input");
+  const biasInputElement = document.getElementById("use-location-bias");
+  const strictBoundsInputElement =
+    document.getElementById("use-strict-bounds");
+  const options = {
+    fields: ["formatted_address", "geometry", "name"],
+    strictBounds: false,
+    types: ["establishment"],
+  };
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
+
+  const autocomplete = new google.maps.places.Autocomplete(
+    input,
+    options
+  );
+
+  // Bind the map's bounds (viewport) property to the autocomplete object,
+  // so that the autocomplete requests use the current map bounds for the
+  // bounds option in the request.
+  autocomplete.bindTo("bounds", map);
+
+  const infowindow = new google.maps.InfoWindow();
+  const infowindowContent = document.getElementById("infowindow-content");
+
+  infowindow.setContent(infowindowContent);
+
+  const marker = new google.maps.Marker({
+    map,
+    anchorPoint: new google.maps.Point(0, -29),
+  });
+
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    marker.setVisible(false);
+
+    const place = autocomplete.getPlace();
+
+    if (!place.geometry || !place.geometry.location) {
+      // User entered the name of a Place that was not suggested and
+      // pressed the Enter key, or the Place Details request failed.
+      window.alert(
+        "No details available for input: '" + place.name + "'"
+      );
+      return;
+    }
+
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    infowindowContent.children["place-name"].textContent = place.name;
+    infowindowContent.children["place-address"].textContent =
+      place.formatted_address;
+    infowindow.open(map, marker);
+  });
+
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  window.initMap = initMap;
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+</script> -->
+
+
+
+	<!-- <script>
+
+
+  const mapStyles = [{
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#f5f5f5"
+    }]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [{
+      "visibility": "off"
+    }]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#bdbdbd"
+    }]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#eeeeee"
+    }]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#e5e5e5"
+    }]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#ffffff"
+    }]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#dadada"
+    }]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#e5e5e5"
+    }]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#eeeeee"
+    }]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#c9c9c9"
+    }]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#009999"
+    }]
+  }
+  ];
+
+
+  const centerLatLng = {
+    lat: 51.444443089837044,
+    lng: 6.988301655641268
+  };
+
+  function initMap() {
+
+
+    // Specify the center location
+
+
+    // Create a map object and center it at the specified location
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: centerLatLng,
+      styles: mapStyles,
+      zoomControl: false,
+      streetViewControl: false,
+      mapTypeControl: false
+    });
+
+    // Add a marker at the center location
+    let marker = new google.maps.Marker({
+      position: centerLatLng,
+      map,
+      title: "",
+      icon: {
+        url: "img/logo-mini-fotor-2.png",
+        scaledSize: new google.maps.Size(40, 40), // Розмір зображення маркера
+      },
+    });
+    marker.addListener('click', function () {
+      infowindow.open(map, marker);
+    });
+    let infowindow = new google.maps.InfoWindow({
+      content: 'Friedbergstrasse 64'
+    });
+  }
+
+
+
+
+  let loc;
+
+  document.getElementById("routeButton").addEventListener("click", buildRoute);
+
+  // функція для побудови маршруту
+  function buildRoute() {
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+      loc = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      let map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+        zoom: 14,
+        styles: mapStyles,
+      });
+
+
+
+      // Plan a route from the user's current location to the marker's location
+
+
+
+      let directionsService = new google.maps.DirectionsService();
+      let directionsRenderer = new google.maps.DirectionsRenderer();
+      directionsRenderer.setMap(map);
+      let request = {
+        origin: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+        destination: {
+          lat: 51.444443089837044,
+          lng: 6.988301655641268
+        },
+
+        travelMode: 'DRIVING'
+      };
+      document.getElementById("openGoogleMapsButton").style.display = "block";
+      let button = document.getElementById('openGoogleMapsButton');
+
+
+      button.addEventListener('click', function () {
+
+        window.open(`https://www.google.com/maps/dir/?api=1&origin=${loc.lat + ', ' +
+          loc.lng}&destination=${request.destination.lat + ', ' + request.destination.lng}&travelmode=driving`);
+
+      });
+      directionsService.route(request, function (result, status) {
+        if (status == 'OK') {
+          directionsRenderer.setDirections(result);
+        }
+      });
+    });
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+  };
+  // Call the initMap function when the page loads
+  window.onload = initMap;
+</script> -->
+	<!-- <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=&v=weekly"
+  defer></script> -->
+	<!-- no places <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=&v=weekly"
+      defer></script> -->
+	<script>
+		let selectedPlaceMarker = null;
+		let directionsRenderer = null;
+		let userMarker = null;
+
+		function initMap() {
+			const baseCoords = {
+				lat: 51.444307,
+				lng: 6.988343
+			};
+			const mapStyles = [{
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#f5f5f5"
+					}]
+				},
+				{
+					"elementType": "labels.icon",
+					"stylers": [{
+						"visibility": "off"
+					}]
+				},
+				{
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "administrative.land_parcel",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#bdbdbd"
+					}]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#eeeeee"
+					}]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#e5e5e5"
+					}]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#ffffff"
+					}]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#dadada"
+					}]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "road.local",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				},
+				{
+					"featureType": "transit.line",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#e5e5e5"
+					}]
+				},
+				{
+					"featureType": "transit.station",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#eeeeee"
+					}]
+				},
+				{
+					"featureType": "water",
+					"elementType": "geometry",
+					"stylers": [{
+						"color": "#c9c9c9"
+					}]
+				},
+				{
+					"featureType": "water",
+					"elementType": "labels.text.fill",
+					"stylers": [{
+						"color": "#009999"
+					}]
+				}
+			];
+
+			const map = new google.maps.Map(document.getElementById("map"), {
+				center: baseCoords,
+				zoom: 12,
+				styles: mapStyles,
+			});
+
+			const basePlaceMarker = new google.maps.Marker({
+				position: baseCoords,
+				map: map,
+				title: "",
+				// icon: {
+				//   url: "img/logo-mini-fotor-2.png",
+				//   scaledSize: new google.maps.Size(40, 40),
+				// },
+			});
+			map.addListener("click", (event) => {
+				getCurrentLocation(function() {
+					const destination = event.latLng;
+
+					if (!userMarker || !destination) {
+						alert("Es konnten keine Koordinaten für den Routenbau abgerufen werden.");
+						return;
+					}
+
+					const originCoords = encodeURIComponent(`${userMarker.getPosition().lat()},${userMarker.getPosition().lng()}`);
+					const destinationCoords = encodeURIComponent(`${destination.lat()},${destination.lng()}`);
+
+					const googleMapsLink = `https://www.google.com/maps/dir/?api=1&origin=${originCoords}&destination=${destinationCoords}&travelmode=driving`;
+
+					// window.open(googleMapsLink, "_blank");
+				});
+			});
+			basePlaceMarker.addListener("click", () => {
+				const geocoder = new google.maps.Geocoder();
+				geocoder.geocode({
+					location: basePlaceMarker.getPosition()
+				}, (results, status) => {
+					if (status === "OK" && results[0]) {
+						const markerAddress = results[0].formatted_address;
+						infoWindow.setContent(`Адреса: ${markerAddress}`);
+						infoWindow.open(map, basePlaceMarker);
+					}
+				});
+				getCurrentLocation(function() {
+					buildRoute();
+				});
+			});
+
+			let infoWindow = new google.maps.InfoWindow();
+
+
+
+			document.getElementById("routeButton").addEventListener("click", function() {
+				getCurrentLocation(function() {
+					buildRoute();
+				});
+			});
+
+			function getCurrentLocation(callback) {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							const userCoords = {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude
+							};
+
+							userMarker = new google.maps.Marker({
+								position: userCoords,
+								map: map,
+								title: "Моє місце розташування"
+							});
+
+							if (typeof callback === "function") {
+								callback(); // Викликайте надану функцію зворотного виклику після того, як userMarker буде встановлено
+							}
+						},
+						function(error) {
+							console.error("Помилка отримання місця розташування:", error);
+						}
+					);
+				} else {
+					console.error("Геолокація не підтримується цим браузером.");
+				}
+			}
+			// document.getElementById("routeButton").addEventListener("click", function () {
+			//     getCurrentLocation();
+			//     buildRoute();
+			// });
+
+			function buildRoute() {
+				if (directionsRenderer) {
+					directionsRenderer.setMap(null);
+				}
+
+				let directionsService = new google.maps.DirectionsService();
+				directionsRenderer = new google.maps.DirectionsRenderer({
+					map: map,
+					panel: document.getElementById("routeInfo"),
+				});
+
+				let request = {
+					origin: userMarker.getPosition(),
+					destination: basePlaceMarker.getPosition(),
+					travelMode: google.maps.TravelMode.DRIVING,
+				};
+
+				directionsService.route(request, function(response, status) {
+					if (status === google.maps.DirectionsStatus.OK) {
+						directionsRenderer.setDirections(response);
+					}
+				});
+
+				document.getElementById("openGoogleMapsButton").style.display = "block";
+			}
+
+			const openGoogleMapsButton = document.getElementById("openGoogleMapsButton");
+			openGoogleMapsButton.addEventListener("click", openGoogleMaps);
+
+
+			function openGoogleMaps() {
+				if (!userMarker) {
+					alert("Standortkoordinaten konnten nicht abgerufen werden.");
+					return;
+				}
+
+				if (!basePlaceMarker.getPosition()) {
+					alert("Standortkoordinaten konnten nicht abgerufen werden.");
+					return;
+				}
+
+				const origin = userMarker.getPosition();
+				const destination = basePlaceMarker.getPosition();
+
+				const originCoords = encodeURIComponent(`${origin.lat()},${origin.lng()}`);
+				const destinationCoords = encodeURIComponent(`${destination.lat()},${destination.lng()}`);
+
+				const googleMapsLink = `https://www.google.com/maps/dir/?api=1&origin=${originCoords}&destination=${destinationCoords}&travelmode=driving`;
+				window.open(googleMapsLink, "_blank");
+			}
+
+
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFD8IC2zBit0K14Ek0Pr4NsRaDBqfg3qw&callback=initMap&libraries=places&v=weekly&_v=20230824144716" async defer></script>
+	<script src="js/app.min.js?_v=20230826133917"></script>
+
+</body>
+
+</html>
