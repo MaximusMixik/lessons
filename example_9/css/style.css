@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap");
+@import url(reset.css);
+
+body {
+  font-size: 18px;
+  color: #37393F;
+  font-family: sans-serif;
+}
+
+
+
+.work {
+  padding-top: 150px;
+  padding-bottom: 138px;
+
+  line-height: 1.2;
+}
+
+/* центруючий контейнер з відступами безпеки */
+.work__container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* .work__header {} */
+
+/* відступ від хедеру до блоку з урахуванням відступу іконки вниз */
+.work__header:not(:last-child) {
+  /* margin-bottom: 77px; */
+  /*  77 - 36 = 41 */
+  margin-bottom: 41px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header__sub-title {
+  font-weight: 500;
+}
+
+.header__sub-title::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #40DDB6;
+  margin-right: 6px;
+
+}
+
+.header__sub-title:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+
+.header__title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+/* .work__body {} */
+
+.body-work {
+  font-size: 0;
+}
+
+/* картки  */
+.body-work__item {
+  text-align: center;
+  max-width: 386px;
+  display: inline-block;
+  width: 100%;
+}
+
+.body-work__item:not(:last-child) {
+  margin-right: 31px;
+}
+
+
+/*  загальна побудова іконок */
+.body-work__icon {
+  width: 72px;
+  height: 72px;
+  display: inline-block;
+  margin-bottom: -36px;
+  border-radius: 50%;
+}
+
+
+.body-work__item:nth-child(2n + 1) .body-work__icon {
+  background-color: #40DDB6;
+}
+
+.body-work__item:nth-child(2n + 2) .body-work__icon {
+  background-color: #6B77E5;
+}
+
+.body-work__icon::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.body-work__item:nth-child(1) .body-work__icon::before {
+  background: url(../img/icon1.svg) center / 43px no-repeat;
+}
+
+.body-work__item:nth-child(2) .body-work__icon::before {
+  background: url(../img/icon2.svg) center / 43px no-repeat;
+}
+
+.body-work__item:nth-child(3) .body-work__icon::before {
+  background: url(../img/icon3.svg) center / 43px no-repeat;
+}
+
+
+/* контент картки */
+.body-work__content {
+  background-color: #F4F4F4;
+  padding: 58px 43px;
+}
+
+.body-work__title {
+  line-height: 1.27;
+  font-weight: 600;
+  font-size: 25px;
+
+}
+
+.body-work__title:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.body-work__text {
+  color: #7D7D7D;
+  line-height: 1.46;
+}
+
+.body-work__text:not(:last-child) {
+  margin-bottom: 37px;
+}
+
+.body-work__text,
+.body-work__link {
+  font-size: 18px;
+}
+
+.body-work__link {
+  color: #6B77E5;
+  font-weight: 600;
+}
+
+.body-work__title a:hover,
+.body-work__link:hover {
+  color: #5763cd;
+  text-decoration: underline;
+}
