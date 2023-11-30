@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Form</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- <header class="header">
+			<div class="header__container">
+			</div>
+		</header> -->
+		<main class="page">
+			<!-- <div class="about">
+				<div class="about__container">
+					<div class="about__items">
+						<div class="about__column">
+							<div class="about__item">
+								<img class="about__image" src="img/honey.webp" alt="Image">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero aliquid alias magnam quam nam placeat
+									error quibusdam harum ut deleniti, eveniet possimus corporis pariatur! Sapiente dicta tempora adipisci
+									voluptas nam?</p>
+							</div>
+						</div>
+						<div class="about__column">
+							<div class="about__item">
+								<img class="about__image about__image--top" src="img/girl.webp" alt="Image">
+								<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, debitis recusandae dolores, cum est
+									ab molestiae quos aliquid animi, excepturi assumenda obcaecati dolor eum pariatur deleniti sequi quia
+									error eius.</p>
+							</div>
+						</div>
+						<div class="about__column">
+							<div class="about__item">
+								<img class="about__image about__image--top" src="img/01.jpg" alt="Image">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque dolores quibusdam quidem amet ipsam
+									vel culpa dignissimos eos aspernatur hic nesciunt nostrum, error quisquam necessitatibus accusamus
+									magnam accusantium ea ullam?</p>
+							</div>
+						</div>
+						<div class="about__column">
+							<div class="about__item">
+								<img class="about__image" src="img/image-01.jpg" alt="Image">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla consequuntur ex tempora accusamus
+									beatae praesentium commodi neque sed iusto ipsam ab error tempore totam, harum unde natus architecto
+									officia quibusdam.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<!-- мій тест з блоками-->
+			<!-- <section class="page__test test">
+				<div class="test__container">
+					<div class="test__body">
+						<div class="test__item">
+							<div class="test__wrapper">
+								<img class="test__image" src="img/honey.webp" alt="">
+								<div class="test__title">Lorem ipsum dolor sit.</div>
+								<div class="test__text">Lorem ipsum,.</div>
+							</div>
+						</div>
+						<div class="test__item">
+							<div class="test__wrapper">
+								<img class="test__image" src="img/girl.webp" alt="">
+								<div class="test__title">Lorem ipsum dolor sit.</div>
+								<div class="test__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ab.</div>
+							</div>
+						</div>
+						<div class="test__item">
+							<div class="test__wrapper">
+								<img class="test__image" src="img/01.jpg" alt="">
+								<div class="test__title">Lorem ipsum dolor sit.</div>
+								<div class="test__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt debitis
+									necessitatibus officia dolorum illo qui..</div>
+							</div>
+						</div>
+						<div class="test__item">
+							<div class="test__wrapper">
+								<img class="test__image" src="img/image-01.jpg" alt="">
+								<div class="test__title">Lorem ipsum dolor sit.</div>
+								<div class="test__text">
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ab.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section> -->
+			<section class="contacts">
+				<form class="contacts__form form" action="https://jsonplaceholder.typicode.com/posts" method="POST">
+					<div class="form__item">
+						<img src="img/form/name.svg" alt="name">
+						<input type="text" id="name" name="name" placeholder="Your Name" required>
+						<label for="name">Enter Your Name</label>
+					</div>
+					<div class="form__item">
+						<img src="img/form/email.svg" alt="email">
+						<input type="email" id="email" name="email" placeholder="Your Email" required>
+						<label for="email">Enter Your Email</label>
+					</div>
+					<div class="form__item">
+						<img src="img/form/phone.svg" alt="phone">
+						<input type="tel" id="tel" name="tel" placeholder="Your Phone" required>
+						<label for="tel">Enter Your Phone</label>
+					</div>
+
+					<div class="form__item">
+						<img onclick="togglePassword()" class=" password" src="img/form/eye.svg" alt="password">
+						<input type="password" id="password" name="password" placeholder="Your Password" required>
+						<label for="password">Enter Your Password</label>
+					</div>
+
+					<!--radio checkbox  -->
+					<fieldset class="form__item checkbox">
+						<legend class="checkbox__legend">Choice your pet</legend>
+						<div class=" checkbox__wrapper">
+							<div class="checkbox__item">
+								<input class="checkbox__input" checked type="checkbox" id="cat" name="pet" value="cat">
+								<label class="checkbox__label" for="cat">cat</label>
+							</div>
+							<div class="checkbox__item">
+								<input class="checkbox__input" type="checkbox" id="dog" name="pet" value="dog">
+								<label class="checkbox__label" for="dog">dog</label>
+							</div>
+							<div class="checkbox__item">
+								<input class="checkbox__input" type="checkbox" id="fish" name="pet" value="fish">
+								<label class="checkbox__label" for="fish">fish</label>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="form__item radio">
+						<legend class="radio__legend">Choice your position</legend>
+						<div class="radio__wrapper ">
+							<div class="radio__item">
+								<input class="radio__input" checked type="radio" id="junior" name="position" value="junior">
+								<label class="radio__label" for="junior">junior</label>
+							</div>
+							<div class="radio__item">
+								<input class="radio__input" type="radio" id="middle" name="position" value="middle">
+								<label class="radio__label" for="middle">middle</label>
+							</div>
+							<div class="radio__item">
+								<input class="radio__input" type="radio" id="senior" name="position" value="senior">
+								<label class="radio__label" for="senior">senior</label>
+							</div>
+						</div>
+					</fieldset>
+					<button class="form__button" type="submit"> Send </button>
+				</form>
+			</section>
+		</main>
+		<!-- <footer class="footer">
+			<div class="footer__container">
+				footer
+			</div>
+		</footer> -->
+	</div>
+	<script>
+		function togglePassword() {
+			const passwordInput = document.getElementById('password');
+			if (passwordInput.type === 'password') {
+				passwordInput.type = 'text';
+			} else {
+				passwordInput.type = 'password';
+			}
+		}
+	</script>
+</body>
+
+</html>
